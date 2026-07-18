@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Giới thiệu — CRIS VŨ</title>
+<meta name="description" content="CRIS VŨ chuyên áo bóng đá replica cao cấp, giống 95–98% hàng chính hãng. Kinh doanh hàng replica hợp pháp tại Việt Nam.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Be+Vietnam+Pro:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="hdr">
+  <div class="hdr-in">
+    <a class="brand" href="index.html"><b>CRIS<span>VŨ</span></b></a>
+    <nav class="nav">
+      <a href="index.html" data-i18n="nav.home">Trang chủ</a>
+      <a href="catalog.html" data-i18n="nav.catalog">Sản phẩm</a>
+      <a href="about.html" class="active" data-i18n="nav.about">Giới thiệu</a>
+      <a class="lang" id="lang-btn" href="#">EN</a>
+    </nav>
+  </div>
+</header>
+
+<section class="about-hero">
+  <h1><span data-i18n="about.title">Về CRIS VŨ</span></h1>
+</section>
+
+<div class="about-body">
+  <p data-i18n="about.p1"></p>
+  <p data-i18n="about.p2"></p>
+  <p data-i18n="about.p3"></p>
+  <p data-i18n="about.p4"></p>
+
+  <div class="badges">
+    <span class="badge"><span class="d"></span><span data-i18n="about.badge1">Giống 95–98% chính hãng</span></span>
+    <span class="badge"><span class="d"></span><span data-i18n="about.badge2">Order 7–12 ngày</span></span>
+    <span class="badge"><span class="d"></span><span data-i18n="about.badge3">Tư vấn size tận tình</span></span>
+  </div>
+</div>
+
+<footer class="ftr">
+  <a class="brand" href="index.html"><b>CRIS<span>VŨ</span></b></a>
+  <p data-i18n="footer.rights">Áo bóng đá replica cao cấp</p>
+  <div class="ftr-links">
+    <a id="fab-fb-2" href="#" target="_blank" rel="noopener">Facebook</a>
+    <a id="fab-ig-2" href="#" target="_blank" rel="noopener">Instagram</a>
+  </div>
+</footer>
+
+<div class="fab">
+  <div class="fab-menu" id="fab-menu">
+    <a class="fab-item" id="fab-zalo" target="_blank" rel="noopener"><span class="d"></span><span data-i18n="contact.zalo">Zalo</span></a>
+    <a class="fab-item" id="fab-phone"><span class="d"></span><span data-i18n="contact.phone">Gọi điện</span></a>
+    <a class="fab-item" id="fab-fb" target="_blank" rel="noopener"><span class="d"></span>Facebook</a>
+    <a class="fab-item" id="fab-ig" target="_blank" rel="noopener"><span class="d"></span>Instagram</a>
+  </div>
+  <button class="fab-toggle" id="fab-toggle" aria-label="Liên hệ">✆</button>
+</div>
+
+<script src="assets/js/i18n.js"></script>
+<script src="assets/js/app.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    applyI18n();
+    initLang();
+    initFab();
+    document.getElementById("fab-fb-2").href = CONTACT.facebook;
+    document.getElementById("fab-ig-2").href = CONTACT.instagram;
+  });
+</script>
+</body>
+</html>

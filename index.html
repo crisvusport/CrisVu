@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CRIS VŨ — Áo bóng đá replica cao cấp</title>
+<meta name="description" content="Áo bóng đá replica cao cấp: CLB, đội tuyển quốc gia, retro. Giống 95–98% hàng chính hãng, order 7–12 ngày.">
+<meta property="og:title" content="CRIS VŨ — Áo bóng đá replica cao cấp">
+<meta property="og:description" content="Giống 95–98% hàng chính hãng · Order 7–12 ngày">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Be+Vietnam+Pro:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="hdr">
+  <div class="hdr-in">
+    <a class="brand" href="index.html">
+      <b>CRIS<span>VŨ</span></b>
+    </a>
+    <nav class="nav">
+      <a href="index.html" class="active" data-i18n="nav.home">Trang chủ</a>
+      <a href="catalog.html" data-i18n="nav.catalog">Sản phẩm</a>
+      <a href="about.html" data-i18n="nav.about">Giới thiệu</a>
+      <a class="lang" id="lang-btn" href="#">EN</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO: tên shop kiểu in sau lưng áo đấu -->
+<section class="hero">
+  <div class="hero-in">
+    <div class="hero-shirt">
+      <div class="hero-num">16</div>
+      <h1 class="hero-name">CRIS <span>VŨ</span></h1>
+      <div class="hero-tag" data-i18n="hero.tagline">Áo bóng đá replica cao cấp</div>
+      <p class="hero-desc" data-i18n="hero.desc">Giống 95–98% hàng chính hãng · Order về trong 7–12 ngày</p>
+      <a class="hero-cta" href="catalog.html">
+        <span data-i18n="hero.cta">Xem bộ sưu tập</span> →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Danh mục -->
+<section class="section">
+  <div class="section-head">
+    <div>
+      <div class="eyebrow" data-i18n="home.browse">Khám phá theo danh mục</div>
+    </div>
+  </div>
+  <div class="cat-cards">
+    <a class="cat-card" href="catalog.html?cat=clb">
+      <div class="idx">01</div>
+      <h3 data-i18n="cat.clb">CLB</h3>
+      <span class="go">→</span>
+    </a>
+    <a class="cat-card" href="catalog.html?cat=doi-tuyen">
+      <div class="idx">02</div>
+      <h3 data-i18n="cat.doi-tuyen">Đội tuyển</h3>
+      <span class="go">→</span>
+    </a>
+    <a class="cat-card" href="catalog.html?cat=retro">
+      <div class="idx">03</div>
+      <h3 data-i18n="cat.retro">Retro</h3>
+      <span class="go">→</span>
+    </a>
+  </div>
+</section>
+
+<!-- Mẫu nổi bật -->
+<section class="section" style="padding-top:0">
+  <div class="section-head">
+    <div>
+      <div class="eyebrow">★</div>
+      <h2 class="section-title" data-i18n="home.featured">Mẫu nổi bật</h2>
+    </div>
+    <a class="link-more" href="catalog.html" data-i18n="home.viewall">Xem tất cả sản phẩm</a>
+  </div>
+  <div class="grid" id="grid"></div>
+</section>
+
+<footer class="ftr">
+  <a class="brand" href="index.html"><b>CRIS<span>VŨ</span></b></a>
+  <p data-i18n="footer.rights">Áo bóng đá replica cao cấp</p>
+  <p data-i18n="footer.demo">Ảnh minh hoạ trong bản demo — sẽ thay bằng ảnh thật</p>
+  <div class="ftr-links">
+    <a id="fab-fb-2" href="#" target="_blank" rel="noopener">Facebook</a>
+    <a id="fab-ig-2" href="#" target="_blank" rel="noopener">Instagram</a>
+  </div>
+</footer>
+
+<!-- Lightbox -->
+<div class="lb" id="lb" role="dialog" aria-modal="true">
+  <button class="lb-close" id="lb-close" aria-label="Close">✕</button>
+  <div class="lb-gallery" id="lb-gallery"></div>
+  <div class="lb-dots" id="lb-dots"></div>
+  <div class="lb-info">
+    <div class="lb-team" id="lb-team"></div>
+    <div class="lb-name" id="lb-name"></div>
+    <div class="lb-sizes-label" data-i18n="detail.sizes">Size có sẵn</div>
+    <div class="lb-sizes" id="lb-sizes"></div>
+    <p class="lb-swipe" data-i18n="detail.swipe">Vuốt để xem mặt trước / sau / chi tiết</p>
+    <a class="lb-order" id="lb-order" href="#" target="_blank" rel="noopener">
+      <span data-i18n="detail.order">Nhắn để hỏi giá & đặt hàng</span>
+    </a>
+  </div>
+</div>
+
+<!-- Nút liên hệ nổi -->
+<div class="fab">
+  <div class="fab-menu" id="fab-menu">
+    <a class="fab-item" id="fab-zalo" target="_blank" rel="noopener"><span class="d"></span><span data-i18n="contact.zalo">Zalo</span></a>
+    <a class="fab-item" id="fab-phone"><span class="d"></span><span data-i18n="contact.phone">Gọi điện</span></a>
+    <a class="fab-item" id="fab-fb" target="_blank" rel="noopener"><span class="d"></span>Facebook</a>
+    <a class="fab-item" id="fab-ig" target="_blank" rel="noopener"><span class="d"></span>Instagram</a>
+  </div>
+  <button class="fab-toggle" id="fab-toggle" aria-label="Liên hệ">✆</button>
+</div>
+
+<script src="assets/js/i18n.js"></script>
+<script src="assets/js/app.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", async () => {
+    applyI18n();
+    initLang();
+    initFab();
+    initLightbox();
+    // footer links
+    document.getElementById("fab-fb-2").href = CONTACT.facebook;
+    document.getElementById("fab-ig-2").href = CONTACT.instagram;
+    await loadProducts();
+    // chỉ hiện mẫu nổi bật
+    const feat = PRODUCTS.filter(p => p.featured).slice(0, 8);
+    const grid = document.getElementById("grid");
+    grid.innerHTML = feat.map(cardHTML).join("");
+    bindCards(grid);
+  });
+</script>
+</body>
+</html>
