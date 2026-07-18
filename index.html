@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CRIS VŨ — Áo bóng đá replica cao cấp</title>
-<meta name="description" content="Áo bóng đá replica cao cấp: CLB, đội tuyển quốc gia, retro. Giống 95–98% hàng chính hãng, order 7–12 ngày.">
+<meta name="description" content="Áo bóng đá replica cao cấp: CLB, đội tuyển quốc gia, retro. Giống 95–98% hàng chính hãng, order 10–15 ngày.">
 <meta property="og:title" content="CRIS VŨ — Áo bóng đá replica cao cấp">
-<meta property="og:description" content="Giống 95–98% hàng chính hãng · Order 7–12 ngày">
+<meta property="og:description" content="Giống 95–98% hàng chính hãng · Order 10–15 ngày">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,7 +36,7 @@
       <div class="hero-num">16</div>
       <h1 class="hero-name">CRIS <span>VŨ</span></h1>
       <div class="hero-tag" data-i18n="hero.tagline">Áo bóng đá replica cao cấp</div>
-      <p class="hero-desc" data-i18n="hero.desc">Giống 95–98% hàng chính hãng · Order về trong 7–12 ngày</p>
+      <p class="hero-desc" data-i18n="hero.desc">Giống 95–98% hàng chính hãng · Order về trong 10–15 ngày</p>
       <a class="hero-cta" href="catalog.html">
         <span data-i18n="hero.cta">Xem bộ sưu tập</span> →
       </a>
@@ -103,9 +103,13 @@
     <div class="lb-sizes-label" data-i18n="detail.sizes">Size có sẵn</div>
     <div class="lb-sizes" id="lb-sizes"></div>
     <p class="lb-swipe" data-i18n="detail.swipe">Vuốt để xem mặt trước / sau / chi tiết</p>
-    <a class="lb-order" id="lb-order" href="#" target="_blank" rel="noopener">
-      <span data-i18n="detail.order">Nhắn để hỏi giá & đặt hàng</span>
-    </a>
+    <div class="lb-order-label" data-i18n="detail.order">Nhắn để hỏi giá & đặt hàng</div>
+    <div class="lb-contacts">
+      <a class="lb-contact" id="lbc-zalo" target="_blank" rel="noopener"><span class="d"></span><span data-i18n="contact.zalo">Zalo</span></a>
+      <a class="lb-contact" id="lbc-phone"><span class="d"></span><span data-i18n="contact.phone">Gọi điện</span></a>
+      <a class="lb-contact" id="lbc-fb" target="_blank" rel="noopener"><span class="d"></span>Facebook</a>
+      <a class="lb-contact" id="lbc-ig" target="_blank" rel="noopener"><span class="d"></span>Instagram</a>
+    </div>
   </div>
 </div>
 
@@ -128,6 +132,7 @@
     initLang();
     initFab();
     initLightbox();
+    initLightboxContacts();
     // footer links
     document.getElementById("fab-fb-2").href = CONTACT.facebook;
     document.getElementById("fab-ig-2").href = CONTACT.instagram;

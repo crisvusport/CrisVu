@@ -37,6 +37,8 @@
     <button class="tab" data-cat="retro" data-i18n="cat.retro">Retro</button>
   </nav>
 
+  <div class="team-row" id="team-row" aria-label="Đội bóng"></div>
+
   <button class="filter-toggle" id="filter-toggle">
     <span data-i18n="filter.title">Bộ lọc</span>
     <span class="count" id="filter-count" style="display:none">0</span>
@@ -47,7 +49,9 @@
     <div class="fgroup"><h4 data-i18n="filter.kit">Mẫu áo</h4><div class="fopts" id="f-kit"></div></div>
     <div class="fgroup"><h4 data-i18n="filter.version">Phiên bản</h4><div class="fopts" id="f-version"></div></div>
     <div class="fgroup"><h4 data-i18n="filter.special">Kiểu đặc biệt</h4><div class="fopts" id="f-special"></div></div>
-    <div class="fgroup"><h4 data-i18n="filter.season">Mùa giải</h4><div class="fopts" id="f-season"></div></div>
+    <div class="fgroup"><h4 data-i18n="filter.season">Mùa giải</h4>
+      <select class="fselect" id="f-season-select"><option value="" data-i18n="filter.season.all">Tất cả mùa</option></select>
+    </div>
     <div class="filters-foot">
       <span class="result-count" id="result-count"></span>
       <button class="clear-btn" id="clear-filters" data-i18n="filter.clear">Xoá lọc</button>
@@ -78,9 +82,13 @@
     <div class="lb-sizes-label" data-i18n="detail.sizes">Size có sẵn</div>
     <div class="lb-sizes" id="lb-sizes"></div>
     <p class="lb-swipe" data-i18n="detail.swipe">Vuốt để xem mặt trước / sau / chi tiết</p>
-    <a class="lb-order" id="lb-order" href="#" target="_blank" rel="noopener">
-      <span data-i18n="detail.order">Nhắn để hỏi giá & đặt hàng</span>
-    </a>
+    <div class="lb-order-label" data-i18n="detail.order">Nhắn để hỏi giá & đặt hàng</div>
+    <div class="lb-contacts">
+      <a class="lb-contact" id="lbc-zalo" target="_blank" rel="noopener"><span class="d"></span><span data-i18n="contact.zalo">Zalo</span></a>
+      <a class="lb-contact" id="lbc-phone"><span class="d"></span><span data-i18n="contact.phone">Gọi điện</span></a>
+      <a class="lb-contact" id="lbc-fb" target="_blank" rel="noopener"><span class="d"></span>Facebook</a>
+      <a class="lb-contact" id="lbc-ig" target="_blank" rel="noopener"><span class="d"></span>Instagram</a>
+    </div>
   </div>
 </div>
 
@@ -103,6 +111,7 @@
     initLang();
     initFab();
     initLightbox();
+    initLightboxContacts();
     document.getElementById("fab-fb-2").href = CONTACT.facebook;
     document.getElementById("fab-ig-2").href = CONTACT.instagram;
     await loadProducts();

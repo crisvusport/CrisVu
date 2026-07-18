@@ -10,7 +10,7 @@ const I18N = {
     "nav.contact": "Liên hệ",
 
     "hero.tagline": "Áo bóng đá replica cao cấp",
-    "hero.desc": "Giống 95–98% hàng chính hãng · Order về trong 7–12 ngày",
+    "hero.desc": "Giống 95–98% hàng chính hãng · Order về trong 10–15 ngày",
     "hero.cta": "Xem bộ sưu tập",
 
     "home.featured": "Mẫu nổi bật",
@@ -48,6 +48,8 @@ const I18N = {
     "special.retro": "Retro",
     "special.dai-tay": "Dài tay",
     "special.crop-top": "Crop top",
+    "special.ao-tap": "Áo tập",
+    "filter.season.all": "Tất cả mùa",
 
     "img.front": "Mặt trước",
     "img.back": "Mặt sau",
@@ -66,10 +68,9 @@ const I18N = {
     "about.title": "Về CRIS VŨ",
     "about.p1": "CRIS VŨ chuyên áo bóng đá replica cao cấp — CLB, đội tuyển quốc gia và những mẫu retro kinh điển.",
     "about.p2": "Hàng của shop là replica chất lượng cao, giống 95–98% so với hàng chính hãng: form dáng, chất vải, logo và chi tiết in thêu được làm tỉ mỉ để mang lại cảm giác gần như bản gốc với mức giá dễ tiếp cận hơn nhiều.",
-    "about.p3": "Kinh doanh hàng replica là hợp pháp tại Việt Nam. Shop luôn nói rõ đây là hàng replica để bạn mua sắm minh bạch và an tâm.",
-    "about.p4": "Phần lớn mẫu là hàng order về trong 7–12 ngày. Cần tư vấn size hay tìm mẫu bất kỳ, nhắn Zalo hoặc Facebook, shop phản hồi nhanh.",
+    "about.p4": "Phần lớn mẫu là hàng order về trong 10–15 ngày. Cần tư vấn size hay tìm mẫu bất kỳ, nhắn Zalo hoặc Facebook, shop phản hồi nhanh.",
     "about.badge1": "Giống 95–98% chính hãng",
-    "about.badge2": "Order 7–12 ngày",
+    "about.badge2": "Order 10–15 ngày",
     "about.badge3": "Tư vấn size tận tình",
 
     "footer.rights": "Áo bóng đá replica cao cấp",
@@ -85,7 +86,7 @@ const I18N = {
     "nav.contact": "Contact",
 
     "hero.tagline": "Premium replica football shirts",
-    "hero.desc": "95–98% identical to authentic · Delivered in 7–12 days",
+    "hero.desc": "95–98% identical to authentic · Delivered in 10–15 days",
     "hero.cta": "View collection",
 
     "home.featured": "Featured kits",
@@ -123,6 +124,8 @@ const I18N = {
     "special.retro": "Retro",
     "special.dai-tay": "Long sleeve",
     "special.crop-top": "Crop top",
+    "special.ao-tap": "Training",
+    "filter.season.all": "All seasons",
 
     "img.front": "Front",
     "img.back": "Back",
@@ -141,10 +144,9 @@ const I18N = {
     "about.title": "About CRIS VŨ",
     "about.p1": "CRIS VŨ specialises in premium replica football shirts — clubs, national teams, and classic retro kits.",
     "about.p2": "Our shirts are high-quality replicas, 95–98% identical to the authentic versions: the fit, fabric, crests and printing are made carefully to feel close to the original, at a far more accessible price.",
-    "about.p3": "Selling replica goods is legal in Vietnam. We always state clearly that these are replicas so you can shop transparently and with confidence.",
-    "about.p4": "Most kits are made to order and arrive within 7–12 days. For sizing help or to find any kit, message us on Zalo or Facebook — we reply fast.",
+    "about.p4": "Most kits are made to order and arrive within 10–15 days. For sizing help or to find any kit, message us on Zalo or Facebook — we reply fast.",
     "about.badge1": "95–98% like authentic",
-    "about.badge2": "7–12 day delivery",
+    "about.badge2": "10–15 day delivery",
     "about.badge3": "Personal size advice",
 
     "footer.rights": "Premium replica football shirts",

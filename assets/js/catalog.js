@@ -5,6 +5,7 @@
 
 const STATE = {
   category: "all",   // all | clb | doi-tuyen | retro
+  team: null,        // đội bóng cụ thể (sổ ra khi chọn danh mục)
   q: "",
   loai: null,
   kit: null,
@@ -15,6 +16,7 @@ const STATE = {
 
 function matchProduct(p){
   if(STATE.category !== "all" && p.category !== STATE.category) return false;
+  if(STATE.team && p.team !== STATE.team) return false;
   if(STATE.loai && p.loai !== STATE.loai) return false;
   if(STATE.kit && p.kit !== STATE.kit) return false;
   if(STATE.version && p.version !== STATE.version) return false;
@@ -41,6 +43,26 @@ function renderCatalog(){
   bindCards(grid);
 }
 
+/* Sổ ra danh sách đội bóng theo danh mục đang chọn */
+function renderTeamRow(){
+  const row = document.getElementById("team-row");
+  if(!row) return;
+  if(STATE.category === "all"){ row.innerHTML = ""; row.classList.remove("show"); return; }
+  const teams = [...new Set(PRODUCTS.filter(p => p.category === STATE.category).map(p => p.team))].sort();
+  if(teams.length === 0){ row.innerHTML = ""; row.classList.remove("show"); return; }
+  row.classList.add("show");
+  row.innerHTML = teams.map(tm =>
+    `<button class="team-chip ${STATE.team===tm?'active':''}" data-team="${tm}">${tm}</button>`
+  ).join("");
+  row.querySelectorAll(".team-chip").forEach(btn => {
+    btn.addEventListener("click", () => {
+      STATE.team = (STATE.team === btn.dataset.team) ? null : btn.dataset.team;
+      renderTeamRow();
+      renderCatalog();
+    });
+  });
+}
+
 /* Xây các nút lọc động từ dữ liệu thực tế */
 function buildFilters(){
   const uniq = (key) => [...new Set(PRODUCTS.map(p=>p[key]).filter(Boolean))];
@@ -50,7 +72,28 @@ function buildFilters(){
   fillFilterGroup("f-kit", uniq("kit"), "kit", "kit");
   fillFilterGroup("f-version", uniq("version"), "version", "version");
   fillFilterGroup("f-special", uniqSpecial, "special", "special");
-  fillFilterGroup("f-season", uniq("season"), "season", null);
+  buildSeasonSelect();
+}
+
+/* Mùa giải: ô chọn (dropdown) — bao nhiêu mùa cũng gọn, tự cập nhật, mới nhất lên đầu */
+function buildSeasonSelect(){
+  const sel = document.getElementById("f-season-select");
+  if(!sel) return;
+  const seasons = [...new Set(PRODUCTS.map(p=>p.season).filter(Boolean))].sort().reverse();
+  const first = sel.querySelector('option[value=""]');
+  sel.innerHTML = "";
+  sel.appendChild(first);
+  seasons.forEach(s => {
+    const o = document.createElement("option");
+    o.value = s; o.textContent = s;
+    sel.appendChild(o);
+  });
+  sel.value = STATE.season || "";
+  sel.onchange = () => {
+    STATE.season = sel.value || null;
+    updateFilterCount();
+    renderCatalog();
+  };
 }
 
 function fillFilterGroup(containerId, values, stateKey, i18nPrefix){
@@ -86,6 +129,8 @@ function updateFilterCount(){
 function clearFilters(){
   ["loai","kit","version","special","season"].forEach(k=>STATE[k]=null);
   document.querySelectorAll(".fopt").forEach(b=>b.classList.remove("active"));
+  const sel = document.getElementById("f-season-select");
+  if(sel) sel.value = "";
   updateFilterCount();
   renderCatalog();
 }
@@ -101,6 +146,8 @@ function initCatalog(){
       document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));
       tab.classList.add("active");
       STATE.category = tab.dataset.cat;
+      STATE.team = null;          // đổi danh mục thì bỏ chọn đội cũ
+      renderTeamRow();
       renderCatalog();
     });
   });
@@ -120,6 +167,7 @@ function initCatalog(){
   if(clr) clr.addEventListener("click", clearFilters);
 
   buildFilters();
+  renderTeamRow();
   updateFilterCount();
   renderCatalog();
 }

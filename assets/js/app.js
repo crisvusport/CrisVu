@@ -71,9 +71,6 @@ function openLightbox(id){
   document.getElementById("lb-name").textContent = productName(p);
   document.getElementById("lb-sizes").innerHTML = p.sizes.map(s=>`<span class="chip">${s}</span>`).join("");
 
-  const zalo = document.getElementById("lb-order");
-  zalo.href = "https://zalo.me/" + CONTACT.zalo;
-
   gal.scrollLeft = 0;
   gal.onscroll = () => {
     const i = Math.round(gal.scrollLeft / gal.clientWidth);
@@ -96,6 +93,14 @@ function initFab(){
   const tgl = document.getElementById("fab-toggle");
   const menu = document.getElementById("fab-menu");
   if(tgl && menu) tgl.addEventListener("click", ()=> menu.classList.toggle("open"));
+}
+
+/* ---------- 4 nút liên hệ trong khung chi tiết sản phẩm ---------- */
+function initLightboxContacts(){
+  const z = document.getElementById("lbc-zalo");   if(z) z.href = "https://zalo.me/"+CONTACT.zalo;
+  const ph = document.getElementById("lbc-phone");  if(ph) ph.href = "tel:"+CONTACT.phone;
+  const fb = document.getElementById("lbc-fb");     if(fb) fb.href = CONTACT.facebook;
+  const ig = document.getElementById("lbc-ig");     if(ig) ig.href = CONTACT.instagram;
 }
 
 /* ---------- Nút chuyển ngôn ngữ ---------- */
