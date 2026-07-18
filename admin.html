@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Quản trị — CRIS VŨ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Be+Vietnam+Pro:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="hdr">
+  <div class="hdr-in">
+    <a class="brand" href="index.html"><b>CRIS<span>VŨ</span></b><small>Quản trị</small></a>
+    <button class="lang" id="logout-btn" style="display:none">Đăng xuất</button>
+  </div>
+</header>
+
+<!-- MÀN ĐĂNG NHẬP -->
+<section id="login-screen" class="admin-wrap">
+  <div class="login-card">
+    <h1 class="admin-h1">Đăng nhập quản trị</h1>
+    <p class="muted">Dán mã token GitHub của bạn vào đây để quản lý sản phẩm. Token chỉ được giữ trong phiên làm việc này, đóng tab là tự xoá.</p>
+    <input type="password" id="token-input" class="inp" placeholder="Dán GitHub token (ghp_... hoặc github_pat_...)" autocomplete="off">
+    <button class="btn-primary" id="login-btn">Đăng nhập</button>
+    <div class="status" id="status"></div>
+    <details class="help">
+      <summary>Chưa có token? Xem cách lấy</summary>
+      <ol>
+        <li>Vào github.com → ảnh đại diện góc phải → <b>Settings</b></li>
+        <li>Kéo xuống cuối menu trái → <b>Developer settings</b></li>
+        <li><b>Personal access tokens</b> → <b>Fine-grained tokens</b> → <b>Generate new token</b></li>
+        <li>Đặt tên bất kỳ; mục <b>Repository access</b> chọn <b>Only select repositories</b> → chọn repo <b>CrisVu</b></li>
+        <li>Mục <b>Permissions → Repository permissions → Contents</b> chọn <b>Read and write</b></li>
+        <li>Bấm <b>Generate token</b>, sao chép mã (dạng <i>github_pat_...</i>) rồi dán vào ô trên</li>
+      </ol>
+      <p class="muted">Giữ token bí mật, không gửi cho ai. Nếu lỡ lộ, vào lại trang token bấm Revoke để huỷ.</p>
+    </details>
+  </div>
+</section>
+
+<!-- BẢNG ĐIỀU KHIỂN -->
+<section id="dash-screen" class="admin-wrap" style="display:none">
+
+  <!-- Danh sách sản phẩm -->
+  <div id="dash-main">
+    <div class="dash-head">
+      <h1 class="admin-h1">Sản phẩm <span class="pill" id="prod-count">0</span></h1>
+      <button class="btn-primary" id="add-btn">+ Thêm sản phẩm</button>
+    </div>
+    <div class="status" id="status-list"></div>
+    <div id="prod-list" class="prod-list"></div>
+  </div>
+
+  <!-- Form thêm/sửa -->
+  <div id="form-screen" style="display:none">
+    <h2 class="admin-h1" id="form-title">Thêm sản phẩm mới</h2>
+    <form name="prod-form" class="pform">
+      <div class="grid2">
+        <label>Đội bóng *<input class="inp" name="team" placeholder="VD: Real Madrid, Việt Nam..." required></label>
+        <label>Mùa giải<input class="inp" name="season" placeholder="VD: 2025/26 hoặc 2026"></label>
+        <label>Danh mục<select class="inp" name="category"></select></label>
+        <label>Loại<select class="inp" name="loai"></select></label>
+        <label>Mẫu áo<select class="inp" name="kit"></select></label>
+        <label>Phiên bản<select class="inp" name="version"></select></label>
+      </div>
+
+      <div class="fld">
+        <span class="fld-lbl">Kiểu đặc biệt (chọn nếu có)</span>
+        <div id="special-boxes" class="cboxes"></div>
+      </div>
+
+      <div class="grid2">
+        <label>Size (cách nhau bằng dấu phẩy)<input class="inp" name="sizes" placeholder="VD: S, M, L, XL, XXL"></label>
+        <label>Màu áo (dùng cho ảnh tạm)<input type="color" class="inp inp-color" name="accent" value="#C9A24B"></label>
+      </div>
+
+      <label class="cbox big"><input type="checkbox" name="featured"> Đánh dấu là mẫu nổi bật (hiện ở trang chủ)</label>
+
+      <div class="fld">
+        <span class="fld-lbl">Ảnh sản phẩm</span>
+        <div class="img-row">
+          <label class="filebox">Mặt trước<input type="file" name="front" accept="image/*"><span class="cur" id="cur-front"></span></label>
+          <label class="filebox">Mặt sau<input type="file" name="back" accept="image/*"><span class="cur" id="cur-back"></span></label>
+          <label class="filebox">Chi tiết (chọn nhiều)<input type="file" name="detail" accept="image/*" multiple><span class="cur" id="cur-detail"></span></label>
+        </div>
+        <p class="muted small">Khi sửa: để trống ô ảnh nào thì giữ nguyên ảnh cũ ô đó. Ảnh tự động nén nhẹ để web tải nhanh.</p>
+      </div>
+
+      <div class="status" id="status"></div>
+
+      <div class="form-actions">
+        <button type="button" class="btn-ghost" id="cancel-btn">Huỷ</button>
+        <button type="submit" class="btn-primary" id="save-btn">Lưu sản phẩm</button>
+      </div>
+    </form>
+  </div>
+
+</section>
+
+<script src="assets/js/admin.js"></script>
+</body>
+</html>

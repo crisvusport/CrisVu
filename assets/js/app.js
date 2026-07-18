@@ -21,9 +21,17 @@ function jerseySVG(accent, label){
   </svg>`;
 }
 
+/* Nhãn ảnh: hỗ trợ nhiều ảnh chi tiết (detail, detail-2, ...) */
+function imgLabel(key){
+  if(key === "front") return t("img.front");
+  if(key === "back") return t("img.back");
+  if(String(key).startsWith("detail")) return t("img.detail");
+  return key;
+}
+
 /* Ưu tiên ảnh thật images/{id}-{key}.jpg; nếu không có -> placeholder */
 function mediaHTML(p, key){
-  const label = t("img." + key);
+  const label = imgLabel(key);
   const tid = `ph_${p.id}_${key}`.replace(/[^a-z0-9_]/gi,"_");
   return `<span class="media-wrap">
     <img src="images/${p.id}-${key}.jpg" alt="${label}" loading="lazy"

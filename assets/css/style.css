@@ -351,3 +351,74 @@ h1,h2,h3{ margin: 0; font-family: var(--display); font-weight: 800; }
 .ftr-links{ display:flex; gap:14px; justify-content:center; margin-top: 12px; }
 .ftr-links a{ font-size: 13px; color: var(--muted); }
 .ftr-links a:hover{ color: var(--gold); }
+
+/* ==========================================================
+   TRANG QUẢN TRỊ (admin.html)
+   ========================================================== */
+.admin-wrap{ max-width: 860px; margin: 0 auto; padding: 24px var(--pad) 80px; }
+.admin-h1{ font-size: clamp(22px,5vw,30px); letter-spacing:.01em; margin-bottom: 6px; }
+.muted{ color: var(--muted); font-size: 14px; line-height:1.55; }
+.muted.small{ font-size: 12px; }
+.pill{ font-family: var(--mono); font-size: 13px; color: var(--ink); background: var(--gold); border-radius: 999px; padding: 1px 10px; margin-left: 6px; vertical-align: middle; }
+
+/* Đăng nhập */
+.login-card{ background: var(--ink-2); border:1px solid var(--line); border-radius: var(--r); padding: 26px; margin-top: 20px; }
+.login-card .muted{ margin: 8px 0 16px; }
+.inp{
+  width:100%; background: var(--ink); border:1px solid var(--line); border-radius: var(--r);
+  color: var(--paper); font-family: var(--body); font-size: 15px; padding: 12px 14px; margin-bottom: 12px;
+}
+.inp:focus{ outline:none; border-color: var(--gold); }
+.inp-color{ height: 46px; padding: 4px; cursor:pointer; }
+select.inp{ cursor:pointer; }
+
+.btn-primary{
+  background: var(--gold); color: var(--ink); font-weight: 600; font-size: 15px;
+  padding: 12px 22px; border-radius: var(--r); transition: background .15s;
+}
+.btn-primary:hover{ background: var(--gold-2); }
+.btn-primary:disabled{ opacity:.5; cursor: default; }
+.btn-ghost{ border:1px solid var(--line); color: var(--paper); padding: 12px 22px; border-radius: var(--r); }
+.btn-ghost:hover{ border-color: var(--gold); }
+
+.status{ font-size: 14px; margin: 10px 0; min-height: 20px; }
+.status.info{ color: var(--gold-2); }
+.status.ok{ color: #63C68A; }
+.status.err{ color: #E9736B; }
+
+.help{ margin-top: 18px; border-top:1px solid var(--line); padding-top: 14px; }
+.help summary{ cursor:pointer; color: var(--gold); font-size: 14px; }
+.help ol{ color:#C6C8CE; font-size:14px; line-height:1.7; padding-left: 20px; margin: 12px 0; }
+.help b{ color: var(--paper); }
+
+/* Danh sách sản phẩm */
+.dash-head{ display:flex; align-items:center; justify-content:space-between; gap:12px; margin: 16px 0 8px; flex-wrap:wrap; }
+.prod-list{ display:flex; flex-direction:column; gap:8px; margin-top: 8px; }
+.prow{ display:flex; align-items:center; gap:12px; background: var(--ink-2); border:1px solid var(--line); border-radius: var(--r); padding: 12px 14px; }
+.prow-color{ width:8px; height:38px; border-radius:2px; flex:0 0 auto; }
+.prow-main{ flex:1; min-width:0; }
+.prow-name{ font-size: 14px; font-weight: 500; }
+.prow-name .star{ color: var(--gold); }
+.prow-meta{ font-family: var(--mono); font-size: 11px; color: var(--muted); margin-top: 3px; }
+.prow-actions{ display:flex; gap:6px; flex:0 0 auto; }
+.btn-sm{ font-size: 13px; border:1px solid var(--line); padding: 7px 13px; border-radius: var(--r); color: var(--paper); }
+.btn-sm:hover{ border-color: var(--gold); }
+.btn-sm.danger:hover{ border-color: #E9736B; color:#E9736B; }
+
+/* Form */
+.pform{ margin-top: 14px; }
+.grid2{ display:grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media (max-width: 560px){ .grid2{ grid-template-columns: 1fr; } }
+.pform label{ display:flex; flex-direction:column; font-size: 13px; color: var(--muted); gap:6px; }
+.fld{ margin: 14px 0; }
+.fld-lbl{ display:block; font-size: 13px; color: var(--muted); margin-bottom: 8px; }
+.cboxes{ display:flex; flex-wrap:wrap; gap: 8px; }
+.cbox{ display:flex; align-items:center; gap:7px; font-size:14px; color: var(--paper); border:1px solid var(--line); padding: 8px 13px; border-radius: 999px; cursor:pointer; }
+.cbox.big{ display:inline-flex; margin: 6px 0 4px; }
+.cbox input{ accent-color: var(--gold); }
+.img-row{ display:grid; grid-template-columns: repeat(3,1fr); gap: 10px; }
+@media (max-width: 560px){ .img-row{ grid-template-columns: 1fr; } }
+.filebox{ font-size:13px; color: var(--muted); display:flex; flex-direction:column; gap:6px; border:1px dashed var(--line); border-radius: var(--r); padding: 12px; }
+.filebox input[type=file]{ font-size: 12px; color: var(--paper); }
+.filebox .cur{ font-size: 11px; color: #63C68A; }
+.form-actions{ display:flex; gap:10px; justify-content:flex-end; margin-top: 18px; }
