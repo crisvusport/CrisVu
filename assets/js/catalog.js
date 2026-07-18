@@ -20,7 +20,9 @@ function matchProduct(p){
   if(STATE.loai && p.loai !== STATE.loai) return false;
   if(STATE.kit && p.kit !== STATE.kit) return false;
   if(STATE.version && p.version !== STATE.version) return false;
-  if(STATE.season && p.season !== STATE.season) return false;
+  if(STATE.season){
+    if(!String(p.season).toLowerCase().includes(STATE.season.toLowerCase())) return false;
+  }
   if(STATE.special && !(p.special||[]).includes(STATE.special)) return false;
   if(STATE.q){
     const hay = (p.team + " " + p.season + " " + productName(p)).toLowerCase();
@@ -75,22 +77,16 @@ function buildFilters(){
   buildSeasonSelect();
 }
 
-/* Mùa giải: ô chọn (dropdown) — bao nhiêu mùa cũng gọn, tự cập nhật, mới nhất lên đầu */
+/* Mùa giải: ô gõ tìm + gợi ý (gõ "2025" gợi ý "2025/26") — bao nhiêu mùa cũng gọn */
 function buildSeasonSelect(){
-  const sel = document.getElementById("f-season-select");
-  if(!sel) return;
+  const input = document.getElementById("f-season-input");
+  const dl = document.getElementById("season-list");
+  if(!input || !dl) return;
   const seasons = [...new Set(PRODUCTS.map(p=>p.season).filter(Boolean))].sort().reverse();
-  const first = sel.querySelector('option[value=""]');
-  sel.innerHTML = "";
-  sel.appendChild(first);
-  seasons.forEach(s => {
-    const o = document.createElement("option");
-    o.value = s; o.textContent = s;
-    sel.appendChild(o);
-  });
-  sel.value = STATE.season || "";
-  sel.onchange = () => {
-    STATE.season = sel.value || null;
+  dl.innerHTML = seasons.map(s => `<option value="${s}"></option>`).join("");
+  input.value = STATE.season || "";
+  input.oninput = () => {
+    STATE.season = input.value.trim() || null;
     updateFilterCount();
     renderCatalog();
   };
@@ -129,8 +125,8 @@ function updateFilterCount(){
 function clearFilters(){
   ["loai","kit","version","special","season"].forEach(k=>STATE[k]=null);
   document.querySelectorAll(".fopt").forEach(b=>b.classList.remove("active"));
-  const sel = document.getElementById("f-season-select");
-  if(sel) sel.value = "";
+  const inp = document.getElementById("f-season-input");
+  if(inp) inp.value = "";
   updateFilterCount();
   renderCatalog();
 }

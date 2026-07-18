@@ -50,7 +50,9 @@
     <div class="fgroup"><h4 data-i18n="filter.version">Phiên bản</h4><div class="fopts" id="f-version"></div></div>
     <div class="fgroup"><h4 data-i18n="filter.special">Kiểu đặc biệt</h4><div class="fopts" id="f-special"></div></div>
     <div class="fgroup"><h4 data-i18n="filter.season">Mùa giải</h4>
-      <select class="fselect" id="f-season-select"><option value="" data-i18n="filter.season.all">Tất cả mùa</option></select>
+      <input class="fselect" id="f-season-input" list="season-list" type="search"
+             data-i18n-ph="filter.season.all" placeholder="Tất cả mùa" autocomplete="off">
+      <datalist id="season-list"></datalist>
     </div>
     <div class="filters-foot">
       <span class="result-count" id="result-count"></span>
