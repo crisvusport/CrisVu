@@ -206,30 +206,6 @@
     "featured": false
   },
   {
-    "id": "kid-rma-home-2526",
-    "loai": "bo-tre-em",
-    "team": "Real Madrid",
-    "category": "clb",
-    "season": "2025/26",
-    "kit": "home",
-    "version": "fan",
-    "special": [],
-    "accent": "#FEBE10",
-    "sizes": [
-      "16",
-      "18",
-      "20",
-      "22",
-      "24",
-      "26"
-    ],
-    "images": [
-      "front",
-      "back"
-    ],
-    "featured": false
-  },
-  {
     "id": "portugal-away-2006-fan",
     "loai": "ao",
     "category": "doi-tuyen",
