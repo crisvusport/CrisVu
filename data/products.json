@@ -9,8 +9,18 @@
     "version": "player",
     "special": [],
     "accent": "#FEBE10",
-    "sizes": ["S", "M", "L", "XL", "XXL"],
-    "images": ["front", "back", "detail"],
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "images": [
+      "front",
+      "back",
+      "detail"
+    ],
     "featured": true
   },
   {
@@ -23,8 +33,15 @@
     "version": "fan",
     "special": [],
     "accent": "#6CABDD",
-    "sizes": ["M", "L", "XL"],
-    "images": ["front", "back"],
+    "sizes": [
+      "M",
+      "L",
+      "XL"
+    ],
+    "images": [
+      "front",
+      "back"
+    ],
     "featured": true
   },
   {
@@ -37,8 +54,17 @@
     "version": "player",
     "special": [],
     "accent": "#A50044",
-    "sizes": ["S", "M", "L", "XL"],
-    "images": ["front", "back", "detail"],
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "images": [
+      "front",
+      "back",
+      "detail"
+    ],
     "featured": false
   },
   {
@@ -49,10 +75,19 @@
     "season": "2025/26",
     "kit": "home",
     "version": "fan",
-    "special": ["dai-tay"],
+    "special": [
+      "dai-tay"
+    ],
     "accent": "#EF0107",
-    "sizes": ["M", "L", "XL"],
-    "images": ["front", "back"],
+    "sizes": [
+      "M",
+      "L",
+      "XL"
+    ],
+    "images": [
+      "front",
+      "back"
+    ],
     "featured": false
   },
   {
@@ -65,8 +100,18 @@
     "version": "fan",
     "special": [],
     "accent": "#DA251D",
-    "sizes": ["S", "M", "L", "XL", "XXL"],
-    "images": ["front", "back", "detail"],
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "images": [
+      "front",
+      "back",
+      "detail"
+    ],
     "featured": true
   },
   {
@@ -79,8 +124,15 @@
     "version": "player",
     "special": [],
     "accent": "#FFDF00",
-    "sizes": ["M", "L", "XL"],
-    "images": ["front", "back"],
+    "sizes": [
+      "M",
+      "L",
+      "XL"
+    ],
+    "images": [
+      "front",
+      "back"
+    ],
     "featured": true
   },
   {
@@ -93,8 +145,16 @@
     "version": "fan",
     "special": [],
     "accent": "#75AADB",
-    "sizes": ["S", "M", "L"],
-    "images": ["front", "back", "detail"],
+    "sizes": [
+      "S",
+      "M",
+      "L"
+    ],
+    "images": [
+      "front",
+      "back",
+      "detail"
+    ],
     "featured": false
   },
   {
@@ -105,10 +165,20 @@
     "season": "1999",
     "kit": "home",
     "version": "fan",
-    "special": ["retro"],
+    "special": [
+      "retro"
+    ],
     "accent": "#DA291C",
-    "sizes": ["M", "L", "XL"],
-    "images": ["front", "back", "detail"],
+    "sizes": [
+      "M",
+      "L",
+      "XL"
+    ],
+    "images": [
+      "front",
+      "back",
+      "detail"
+    ],
     "featured": true
   },
   {
@@ -119,10 +189,20 @@
     "season": "1994",
     "kit": "home",
     "version": "fan",
-    "special": ["retro"],
+    "special": [
+      "retro"
+    ],
     "accent": "#FFDF00",
-    "sizes": ["S", "M", "L", "XL"],
-    "images": ["front", "back"],
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "images": [
+      "front",
+      "back"
+    ],
     "featured": false
   },
   {
@@ -135,8 +215,50 @@
     "version": "fan",
     "special": [],
     "accent": "#FEBE10",
-    "sizes": ["16", "18", "20", "22", "24", "26"],
-    "images": ["front", "back"],
+    "sizes": [
+      "16",
+      "18",
+      "20",
+      "22",
+      "24",
+      "26"
+    ],
+    "images": [
+      "front",
+      "back"
+    ],
     "featured": false
+  },
+  {
+    "id": "portugal-away-2006-fan",
+    "loai": "ao",
+    "category": "doi-tuyen",
+    "team": "Portugal",
+    "season": "2006",
+    "kit": "away",
+    "version": "fan",
+    "special": [
+      "retro",
+      "dai-tay"
+    ],
+    "accent": "#c9a24b",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "featured": true,
+    "images": [
+      "front",
+      "back",
+      "detail",
+      "detail-2",
+      "detail-3",
+      "detail-4",
+      "detail-5",
+      "detail-6"
+    ]
   }
 ]
