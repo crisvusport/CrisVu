@@ -92,5 +92,32 @@
       "detail-5",
       "detail-6"
     ]
+  },
+  {
+    "id": "france-home-2026-player",
+    "loai": "ao",
+    "category": "doi-tuyen",
+    "team": "France",
+    "season": "2026",
+    "kit": "home",
+    "version": "player",
+    "special": [],
+    "accent": "#c9a24b",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "featured": true,
+    "images": [
+      "front",
+      "back",
+      "detail",
+      "detail-2",
+      "detail-3",
+      "detail-4"
+    ]
   }
 ]
