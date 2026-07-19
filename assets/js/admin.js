@@ -145,7 +145,7 @@ async function ghDelete(path, message, sha){
 }
 
 /* ---------- Nén ảnh -> JPEG base64 (nhẹ, load nhanh) ---------- */
-function fileToJpegB64(file, maxW=1200, quality=0.85){
+function fileToJpegB64(file, maxW=2000, quality=0.92){
   return new Promise((resolve, reject) => {
     const img = new Image();
     const url = URL.createObjectURL(file);
@@ -156,6 +156,7 @@ function fileToJpegB64(file, maxW=1200, quality=0.85){
       const c = document.createElement("canvas");
       c.width = w; c.height = h;
       const ctx = c.getContext("2d");
+      ctx.imageSmoothingEnabled = true; ctx.imageSmoothingQuality = "high";
       ctx.fillStyle = "#0A0B0E"; ctx.fillRect(0,0,w,h);
       ctx.drawImage(img, 0, 0, w, h);
       resolve(c.toDataURL("image/jpeg", quality).split(",")[1]);
@@ -304,6 +305,19 @@ async function submitForm(e){
       id = editingId;
       Object.assign(product, base);
     }else{
+      // cảnh báo nếu có sản phẩm tương tự (cùng đội, mùa giải, mẫu áo, phiên bản, loại)
+      const dup = PRODUCTS.find(p =>
+        (p.team||"").trim().toLowerCase() === team.toLowerCase() &&
+        p.season === base.season && p.kit === base.kit &&
+        p.version === base.version && p.loai === base.loai
+      );
+      if(dup){
+        const ok = confirm(
+          "Có vẻ đã có sản phẩm giống thế này:\n\n• " + productName(dup) +
+          "\n\nBấm OK nếu bạn VẪN muốn thêm mới.\nBấm Cancel để quay lại (muốn sửa sản phẩm cũ thì dùng nút \"Sửa\")."
+        );
+        if(!ok){ setStatus("Đã huỷ — sản phẩm có thể đã tồn tại.", "err"); saveBtn.disabled = false; return; }
+      }
       id = makeId(team, base.kit, base.season, base.version);
       product = { id, ...base, images: [] };
       PRODUCTS.push(product);

@@ -23,7 +23,11 @@ const STATE = {
 };
 
 function matchProduct(p){
-  if(STATE.category !== "all" && p.category !== STATE.category) return false;
+  if(STATE.category === "retro"){
+    if(!(p.special||[]).includes("retro")) return false;
+  } else if(STATE.category !== "all" && p.category !== STATE.category){
+    return false;
+  }
   if(STATE.team.length && !STATE.team.includes(p.team)) return false;
   if(STATE.loai.length && !STATE.loai.includes(p.loai)) return false;
   if(STATE.kit.length && !STATE.kit.includes(p.kit)) return false;
@@ -58,7 +62,10 @@ function renderTeamRow(){
   const row = document.getElementById("team-row");
   if(!row) return;
   if(STATE.category === "all"){ row.innerHTML = ""; row.classList.remove("show"); return; }
-  const teams = [...new Set(PRODUCTS.filter(p => p.category === STATE.category).map(p => p.team))].sort();
+  const pool = STATE.category === "retro"
+    ? PRODUCTS.filter(p => (p.special||[]).includes("retro"))
+    : PRODUCTS.filter(p => p.category === STATE.category);
+  const teams = [...new Set(pool.map(p => p.team))].sort();
   if(teams.length === 0){ row.innerHTML = ""; row.classList.remove("show"); return; }
   row.classList.add("show");
   row.innerHTML = teams.map(tm =>
