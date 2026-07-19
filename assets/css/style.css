@@ -294,6 +294,20 @@ h1,h2,h3{ margin: 0; font-family: var(--display); font-weight: 800; }
 }
 .lb-gallery{ flex:1; display:flex; overflow-x:auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
 .lb-gallery::-webkit-scrollbar{ display:none; }
+.lb-stage{ position: relative; flex: 1; display:flex; min-height: 0; }
+.lb-nav{
+  position:absolute; top:50%; transform: translateY(-50%); z-index: 3;
+  width:46px; height:46px; border-radius:50%;
+  background: rgba(26,26,29,.85); border:1px solid var(--line); color: var(--paper);
+  font-size: 26px; line-height: 1; display:none; align-items:center; justify-content:center;
+  cursor:pointer; transition: border-color .15s, color .15s, background .15s;
+}
+.lb-nav.show{ display:flex; }
+.lb-nav:hover{ border-color: var(--gold); color: var(--gold); background: var(--ink-3); }
+.lb-prev{ left: 18px; }
+.lb-next{ right: 18px; }
+/* điện thoại: ẩn nút, dùng vuốt */
+@media (max-width: 680px){ .lb-nav.show{ display:none; } }
 .lb-slide{ flex:0 0 100%; scroll-snap-align:center; display:flex; align-items:center; justify-content:center; padding: 56px 20px 8px; }
 .lb-slide .media-wrap{ display:flex; align-items:center; justify-content:center; }
 .lb-slide img, .lb-slide svg{ max-height: 58vh; width:auto; object-fit: contain; border-radius: var(--r); }

@@ -39,7 +39,8 @@ const I18N = {
 
     "kit.home": "Sân nhà",
     "kit.away": "Sân khách",
-    "kit.third": "Áo thứ ba",
+    "kit.third": "Third",
+    "kit.ao-tap": "Áo tập",
     "kit.gk": "Thủ môn",
 
     "version.fan": "Fan",
@@ -116,6 +117,7 @@ const I18N = {
     "kit.home": "Home",
     "kit.away": "Away",
     "kit.third": "Third",
+    "kit.ao-tap": "Training",
     "kit.gk": "Goalkeeper",
 
     "version.fan": "Fan",

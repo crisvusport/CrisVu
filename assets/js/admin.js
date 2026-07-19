@@ -12,9 +12,9 @@ const API = `https://api.github.com/repos/${REPO.owner}/${REPO.name}`;
 const OPT = {
   loai: [["ao","Áo"],["quan","Quần"],["bo-tre-em","Bộ trẻ em"]],
   category: [["clb","CLB"],["doi-tuyen","Đội tuyển"],["retro","Retro"]],
-  kit: [["home","Sân nhà"],["away","Sân khách"],["third","Áo thứ ba"],["gk","Thủ môn"]],
+  kit: [["home","Sân nhà"],["away","Sân khách"],["third","Third"],["ao-tap","Áo tập"]],
   version: [["fan","Fan"],["player","Player"]],
-  special: [["retro","Retro"],["dai-tay","Dài tay"],["ao-tap","Áo tập"],["crop-top","Crop top"]]
+  special: [["retro","Retro"],["dai-tay","Dài tay"],["crop-top","Crop top"]]
 };
 
 let PRODUCTS = [];

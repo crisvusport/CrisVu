@@ -48,7 +48,6 @@ function cardHTML(p){
   (p.special||[]).forEach(s => chips.push(`<span class="chip">${t("special."+s)}</span>`));
   return `<button class="card" data-id="${p.id}" aria-label="${productName(p)}">
     <div class="card-media">
-      <span class="card-accent" style="background:${p.accent}"></span>
       <span class="card-tag">${p.season}</span>
       ${mediaHTML(p, p.images[0])}
     </div>
@@ -84,6 +83,13 @@ function openLightbox(id){
     const i = Math.round(gal.scrollLeft / gal.clientWidth);
     dots.querySelectorAll(".lb-dot").forEach((d,idx)=>d.classList.toggle("active", idx===i));
   };
+
+  // nút chuyển ảnh chỉ hiện khi có nhiều hơn 1 ảnh
+  const multi = p.images.length > 1;
+  const prevB = document.getElementById("lb-prev");
+  const nextB = document.getElementById("lb-next");
+  if(prevB) prevB.classList.toggle("show", multi);
+  if(nextB) nextB.classList.toggle("show", multi);
   lb.classList.add("open");
   document.body.style.overflow = "hidden";
 }
@@ -132,7 +138,20 @@ async function loadProducts(){
 function initLightbox(){
   const close = document.getElementById("lb-close");
   const lb = document.getElementById("lb");
+  const gal = document.getElementById("lb-gallery");
   if(close) close.addEventListener("click", closeLightbox);
   if(lb) lb.addEventListener("click", e => { if(e.target.id==="lb") closeLightbox(); });
   document.addEventListener("keydown", e => { if(e.key==="Escape") closeLightbox(); });
+
+  // nút chuyển ảnh (máy tính)
+  const prevB = document.getElementById("lb-prev");
+  const nextB = document.getElementById("lb-next");
+  if(gal && prevB) prevB.addEventListener("click", e => { e.stopPropagation(); gal.scrollBy({left:-gal.clientWidth, behavior:"smooth"}); });
+  if(gal && nextB) nextB.addEventListener("click", e => { e.stopPropagation(); gal.scrollBy({left: gal.clientWidth, behavior:"smooth"}); });
+  // phím mũi tên trái/phải
+  document.addEventListener("keydown", e => {
+    if(!lb.classList.contains("open")) return;
+    if(e.key==="ArrowLeft" && gal) gal.scrollBy({left:-gal.clientWidth, behavior:"smooth"});
+    if(e.key==="ArrowRight" && gal) gal.scrollBy({left: gal.clientWidth, behavior:"smooth"});
+  });
 }
