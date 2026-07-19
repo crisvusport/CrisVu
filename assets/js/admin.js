@@ -21,57 +21,86 @@ let PRODUCTS = [];
 let productsSha = null;
 let editingId = null;   // null = đang thêm mới; có giá trị = đang sửa
 
-/* Ảnh đang chọn (chưa lưu) — cho phép xem trước và bỏ từng ảnh */
-let pendingFront = null;
-let pendingBack = null;
-let pendingDetails = [];
-function resetPendings(){ pendingFront = null; pendingBack = null; pendingDetails = []; }
+/* ---------- Quản lý ảnh (thêm & sửa) ----------
+   front/back: ảnh cũ (kept) hoặc ảnh mới (pending), bỏ được bằng ✕
+   detailItems: danh sách ảnh chi tiết theo THỨ TỰ, gồm ảnh cũ + ảnh mới lẫn nhau;
+   mỗi ảnh có ✕ (bỏ) và ‹ › (đổi thứ tự). */
+let keptFront = false, keptBack = false;
+let pendingFront = null, pendingBack = null;
+let detailItems = [];   // {type:'old', key} hoặc {type:'new', file}
 
-/* Vẽ ảnh xem trước cho 1 ô (front/back) */
+function initImageState(product){
+  const imgs = product ? (product.images||[]) : [];
+  keptFront = imgs.includes("front");
+  keptBack  = imgs.includes("back");
+  detailItems = imgs.filter(k => k.startsWith("detail")).map(k => ({type:"old", key:k}));
+  pendingFront = null; pendingBack = null;
+}
+function detailIndex(key){
+  if(key === "detail") return 1;
+  const m = /^detail-(\d+)$/.exec(key);
+  return m ? Number(m[1]) : 1;
+}
+
+/* Ô mặt trước / mặt sau */
 function slotPreviewHTML(kind){
   const p = editingId ? PRODUCTS.find(x=>x.id===editingId) : null;
   const pending = kind === "front" ? pendingFront : pendingBack;
+  const kept = kind === "front" ? keptFront : keptBack;
   if(pending){
     const url = URL.createObjectURL(pending);
-    return `<span class="pv"><img src="${url}"><button type="button" class="pv-x" data-clear="${kind}">✕</button></span><span class="cur-ok">ảnh mới</span>`;
+    return `<span class="pv"><img src="${url}"><button type="button" class="pv-x" data-clearnew="${kind}">✕</button></span><span class="cur-ok">ảnh mới</span>`;
   }
-  if(p && (p.images||[]).includes(kind)){
-    return `<img class="thumb" src="images/${p.id}-${kind}.jpg" onerror="this.style.display='none'"><span class="cur-ok">ảnh hiện tại</span>`;
+  if(kept && p){
+    return `<span class="pv"><img src="images/${p.id}-${kind}.jpg" onerror="this.parentElement.style.display='none'"><button type="button" class="pv-x" data-removeold="${kind}">✕</button></span><span class="cur-ok">ảnh hiện tại</span>`;
   }
   return "";
 }
-/* Vẽ ảnh xem trước cho ô chi tiết (nhiều ảnh) */
+/* Ô chi tiết: danh sách có thứ tự, mỗi ảnh có ✕ và ‹ › */
 function detailPreviewHTML(){
   const p = editingId ? PRODUCTS.find(x=>x.id===editingId) : null;
-  if(pendingDetails.length){
-    return pendingDetails.map((f,i)=>{
-      const url = URL.createObjectURL(f);
-      return `<span class="pv"><img src="${url}"><button type="button" class="pv-x" data-cleardetail="${i}">✕</button></span>`;
-    }).join("") + `<span class="cur-ok">${pendingDetails.length} ảnh mới</span>`;
-  }
-  if(p){
-    const details = (p.images||[]).filter(k=>k.startsWith("detail"));
-    if(details.length){
-      return details.map(k=>`<img class="thumb" src="images/${p.id}-${k}.jpg" onerror="this.style.display='none'">`).join("")
-             + `<span class="cur-ok">${details.length} ảnh hiện tại</span>`;
-    }
-  }
-  return "";
+  if(!detailItems.length) return "";
+  const html = detailItems.map((it,i) => {
+    const src = it.type === "old" ? `images/${p.id}-${it.key}.jpg` : URL.createObjectURL(it.file);
+    return `<span class="pv pv-ord">
+      <img src="${src}" onerror="this.parentElement.style.opacity='.35'">
+      <button type="button" class="pv-x" data-detdel="${i}">✕</button>
+      <span class="pv-move">
+        <button type="button" class="pv-mv" data-detleft="${i}" ${i===0?'disabled':''}>‹</button>
+        <button type="button" class="pv-mv" data-detright="${i}" ${i===detailItems.length-1?'disabled':''}>›</button>
+      </span>
+    </span>`;
+  }).join("");
+  return html + `<span class="cur-ok">${detailItems.length} ảnh · dùng ‹ › để đổi thứ tự</span>`;
 }
 function renderImagePreviews(){
   document.getElementById("cur-front").innerHTML = slotPreviewHTML("front");
   document.getElementById("cur-back").innerHTML = slotPreviewHTML("back");
   document.getElementById("cur-detail").innerHTML = detailPreviewHTML();
-  document.querySelectorAll("[data-clear]").forEach(b => b.addEventListener("click", () => {
-    const k = b.dataset.clear;
+
+  document.querySelectorAll("[data-clearnew]").forEach(b => b.onclick = () => {
+    const k = b.dataset.clearnew;
     if(k === "front"){ pendingFront = null; document.getElementById("in-front").value = ""; }
     if(k === "back"){ pendingBack = null; document.getElementById("in-back").value = ""; }
     renderImagePreviews();
-  }));
-  document.querySelectorAll("[data-cleardetail]").forEach(b => b.addEventListener("click", () => {
-    pendingDetails.splice(Number(b.dataset.cleardetail), 1);
+  });
+  document.querySelectorAll("[data-removeold]").forEach(b => b.onclick = () => {
+    if(b.dataset.removeold === "front") keptFront = false;
+    if(b.dataset.removeold === "back") keptBack = false;
     renderImagePreviews();
-  }));
+  });
+  document.querySelectorAll("[data-detdel]").forEach(b => b.onclick = () => {
+    detailItems.splice(Number(b.dataset.detdel), 1);
+    renderImagePreviews();
+  });
+  document.querySelectorAll("[data-detleft]").forEach(b => b.onclick = () => {
+    const i = Number(b.dataset.detleft);
+    if(i>0){ [detailItems[i-1], detailItems[i]] = [detailItems[i], detailItems[i-1]]; renderImagePreviews(); }
+  });
+  document.querySelectorAll("[data-detright]").forEach(b => b.onclick = () => {
+    const i = Number(b.dataset.detright);
+    if(i<detailItems.length-1){ [detailItems[i+1], detailItems[i]] = [detailItems[i], detailItems[i+1]]; renderImagePreviews(); }
+  });
 }
 
 /* ---------- Token (chỉ trong phiên) ---------- */
@@ -228,14 +257,13 @@ function openForm(id){
   editingId = id || null;
   const f = document.forms["prod-form"];
   f.reset();
-  resetPendings();
   document.getElementById("in-front").value = "";
   document.getElementById("in-back").value = "";
   document.getElementById("in-detail").value = "";
   document.getElementById("form-title").textContent = id ? "Sửa sản phẩm" : "Thêm sản phẩm mới";
 
-  if(id){
-    const p = PRODUCTS.find(x=>x.id===id);
+  const p = id ? PRODUCTS.find(x=>x.id===id) : null;
+  if(p){
     f.loai.value = p.loai; f.category.value = p.category; f.team.value = p.team;
     f.season.value = p.season; f.kit.value = p.kit; f.version.value = p.version;
     f.accent.value = p.accent || "#C9A24B";
@@ -243,6 +271,7 @@ function openForm(id){
     f.featured.checked = !!p.featured;
     document.querySelectorAll("input[name='special']").forEach(cb => cb.checked = (p.special||[]).includes(cb.value));
   }
+  initImageState(p);
   renderImagePreviews();
   hide("dash-main"); show("form-screen");
   window.scrollTo(0,0);
@@ -281,34 +310,39 @@ async function submitForm(e){
     }
     newId = editingId ? null : id;
 
-    // ẢNH (lấy từ danh sách đang chọn, đã cho phép xem trước/bỏ)
-    let images = editingId ? [...(product.images||[])] : [];
-    const frontFile = pendingFront;
-    const backFile = pendingBack;
-    const detailFiles = pendingDetails;
+    // ẢNH — dựng lại danh sách theo đúng thứ tự người dùng sắp xếp
+    const images = [];
 
-    if(!editingId && !frontFile){ throw new Error("Cần ít nhất ảnh mặt trước cho sản phẩm mới."); }
+    // mặt trước
+    if(pendingFront){ setStatus("Đang tải ảnh mặt trước...","info"); await uploadImage(id,"front",pendingFront); images.push("front"); }
+    else if(keptFront){ images.push("front"); }
+    // mặt sau
+    if(pendingBack){ setStatus("Đang tải ảnh mặt sau...","info"); await uploadImage(id,"back",pendingBack); images.push("back"); }
+    else if(keptBack){ images.push("back"); }
 
-    if(frontFile){ setStatus("Đang tải ảnh mặt trước...","info"); await uploadImage(id,"front",frontFile); if(!images.includes("front")) images.unshift("front"); }
-    if(backFile){ setStatus("Đang tải ảnh mặt sau...","info"); await uploadImage(id,"back",backFile); if(!images.includes("back")) images.push("back"); }
-    if(detailFiles.length){
-      setStatus("Đang tải ảnh chi tiết...","info");
-      images = images.filter(k=>!k.startsWith("detail")); // thay toàn bộ ảnh chi tiết
-      for(let i=0;i<detailFiles.length;i++){
-        const key = i===0 ? "detail" : `detail-${i+1}`;
-        await uploadImage(id, key, detailFiles[i]);
+    if(!images.includes("front")){ throw new Error("Cần có ảnh mặt trước."); }
+
+    // ảnh chi tiết theo thứ tự (ảnh cũ giữ key, ảnh mới cấp key mới)
+    let maxIdx = detailItems.filter(it=>it.type==="old").reduce((m,it)=>Math.max(m, detailIndex(it.key)), 0);
+    let uploadedNew = 0;
+    for(const it of detailItems){
+      if(it.type === "old"){ images.push(it.key); }
+      else {
+        maxIdx++;
+        const key = maxIdx === 1 ? "detail" : `detail-${maxIdx}`;
+        if(!uploadedNew) setStatus("Đang tải ảnh chi tiết...","info");
+        await uploadImage(id, key, it.file);
         images.push(key);
+        uploadedNew++;
       }
     }
-    // sắp xếp: front, back, details
-    const order = k => k==="front"?0 : k==="back"?1 : 2;
-    product.images = images.sort((a,b)=>order(a)-order(b));
+
+    product.images = images;   // giữ nguyên thứ tự: front, back, rồi chi tiết theo sắp xếp
 
     setStatus("Đang lưu danh sách sản phẩm...","info");
     await saveProductsJson(editingId ? `Sửa ${id}` : `Thêm ${id}`);
 
     setStatus("Đã lưu! Web sẽ cập nhật sau khoảng 1 phút.","ok");
-    resetPendings();
     renderList();
     setTimeout(closeForm, 1200);
   }catch(err){
@@ -371,7 +405,8 @@ function initForm(){
     pendingBack = e.target.files[0] || null; renderImagePreviews();
   });
   document.getElementById("in-detail").addEventListener("change", e => {
-    pendingDetails.push(...e.target.files); e.target.value = ""; renderImagePreviews();
+    for(const file of e.target.files){ detailItems.push({type:"new", file}); }
+    e.target.value = ""; renderImagePreviews();
   });
 }
 

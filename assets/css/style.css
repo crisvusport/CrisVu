@@ -446,4 +446,13 @@ select.inp{ cursor:pointer; }
   display:flex; align-items:center; justify-content:center; border:2px solid var(--ink-2); cursor:pointer;
 }
 .pv-x:hover{ background:#f0857d; }
+.pv-ord{ }
+.pv-move{ position:absolute; left:0; right:0; bottom:-2px; display:flex; justify-content:space-between; }
+.pv-mv{
+  width:22px; height:22px; border-radius:4px; background: rgba(13,14,18,.85);
+  border:1px solid var(--line); color: var(--paper); font-size:15px; line-height:1;
+  display:flex; align-items:center; justify-content:center; cursor:pointer;
+}
+.pv-mv:hover:not(:disabled){ border-color: var(--gold); color: var(--gold); }
+.pv-mv:disabled{ opacity:.3; cursor:default; }
 .form-actions{ display:flex; gap:10px; justify-content:flex-end; margin-top: 18px; }

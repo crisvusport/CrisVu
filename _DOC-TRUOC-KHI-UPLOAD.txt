@@ -1,3 +1,2 @@
 GÓI CHỈ CHỨA FILE GIAO DIỆN — KHÔNG có data/products.json, KHÔNG có images/.
-Upload đè toàn bộ nội dung này lên GitHub như mọi lần.
-Sản phẩm và ảnh bạn đã thêm qua trang quản trị sẽ ĐƯỢC GIỮ NGUYÊN.
+Upload đè toàn bộ nội dung này lên GitHub. Sản phẩm & ảnh của bạn được giữ nguyên.
