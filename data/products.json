@@ -1,28 +1,5 @@
 [
   {
-    "id": "bar-away-2526-player",
-    "loai": "ao",
-    "team": "Barcelona",
-    "category": "clb",
-    "season": "2025/26",
-    "kit": "away",
-    "version": "player",
-    "special": [],
-    "accent": "#A50044",
-    "sizes": [
-      "S",
-      "M",
-      "L",
-      "XL"
-    ],
-    "images": [
-      "front",
-      "back",
-      "detail"
-    ],
-    "featured": false
-  },
-  {
     "id": "ars-longsleeve-2526-fan",
     "loai": "ao",
     "team": "Arsenal",
