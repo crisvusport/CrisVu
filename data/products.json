@@ -43,30 +43,6 @@
     "featured": false
   },
   {
-    "id": "bra-retro-1994-fan",
-    "loai": "ao",
-    "team": "Brazil",
-    "category": "retro",
-    "season": "1994",
-    "kit": "home",
-    "version": "fan",
-    "special": [
-      "retro"
-    ],
-    "accent": "#FFDF00",
-    "sizes": [
-      "S",
-      "M",
-      "L",
-      "XL"
-    ],
-    "images": [
-      "front",
-      "back"
-    ],
-    "featured": false
-  },
-  {
     "id": "portugal-away-2006-fan",
     "loai": "ao",
     "category": "doi-tuyen",
