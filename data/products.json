@@ -172,5 +172,32 @@
       "detail-2",
       "detail-3"
     ]
+  },
+  {
+    "id": "brazil-away-2026-player",
+    "loai": "ao",
+    "category": "doi-tuyen",
+    "team": "Brazil",
+    "season": "2026",
+    "kit": "away",
+    "version": "player",
+    "special": [],
+    "accent": "#c9a24b",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "featured": true,
+    "images": [
+      "front",
+      "back",
+      "detail",
+      "detail-2",
+      "detail-3",
+      "detail-4"
+    ]
   }
 ]
