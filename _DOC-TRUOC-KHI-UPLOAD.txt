@@ -1,8 +1,8 @@
 GÓI CHỈ CHỨA FILE GIAO DIỆN — KHÔNG có data/products.json, KHÔNG có images/.
 Upload đè toàn bộ nội dung này lên GitHub. Sản phẩm & ảnh của bạn được giữ nguyên.
 
-Bản này sửa:
-1. Tab RETRO giờ hiện đúng sản phẩm retro.
-2. Cảnh báo khi thêm sản phẩm trùng (cùng đội/mùa/mẫu áo/phiên bản).
-3. Zoom ảnh tự do hơn: phóng đúng điểm chạm/con trỏ, kéo thoải mái.
+Bản này:
+1. Sửa lỗi cảnh báo trùng sản phẩm (chỉ hiện khi thêm mới, không hiện khi sửa).
+2. Tab RETRO giờ hiện đúng sản phẩm retro.
+3. Zoom ảnh tự do: phóng đúng điểm chạm/con trỏ, kéo thoải mái.
 4. Ảnh upload nét hơn (tối đa 2000px, chất lượng 92%).

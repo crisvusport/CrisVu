@@ -312,8 +312,9 @@ async function submitForm(e){
         p.version === base.version && p.loai === base.loai
       );
       if(dup){
+        const dupName = `${dup.team} · ${dup.season} · ${label("kit",dup.kit)} · ${label("version",dup.version)}`;
         const ok = confirm(
-          "Có vẻ đã có sản phẩm giống thế này:\n\n• " + productName(dup) +
+          "Có vẻ đã có sản phẩm giống thế này:\n\n• " + dupName +
           "\n\nBấm OK nếu bạn VẪN muốn thêm mới.\nBấm Cancel để quay lại (muốn sửa sản phẩm cũ thì dùng nút \"Sửa\")."
         );
         if(!ok){ setStatus("Đã huỷ — sản phẩm có thể đã tồn tại.", "err"); saveBtn.disabled = false; return; }
