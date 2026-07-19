@@ -85,7 +85,6 @@
 <footer class="ftr">
   <a class="brand" href="index.html"><b>CRIS<span>VŨ</span></b></a>
   <p data-i18n="footer.rights">Áo bóng đá replica cao cấp</p>
-  <p data-i18n="footer.demo">Ảnh minh hoạ trong bản demo — sẽ thay bằng ảnh thật</p>
   <div class="ftr-links">
     <a id="fab-fb-2" href="#" target="_blank" rel="noopener">Facebook</a>
     <a id="fab-ig-2" href="#" target="_blank" rel="noopener">Instagram</a>
@@ -107,6 +106,7 @@
     <div class="lb-sizes-label" data-i18n="detail.sizes">Size có sẵn</div>
     <div class="lb-sizes" id="lb-sizes"></div>
     <p class="lb-swipe" data-i18n="detail.swipe">Vuốt để xem mặt trước / sau / chi tiết</p>
+    <p class="lb-swipe" data-i18n="detail.tapzoom">Chạm vào ảnh để phóng to</p>
     <div class="lb-order-label" data-i18n="detail.order">Nhắn để hỏi giá & đặt hàng</div>
     <div class="lb-contacts">
       <a class="lb-contact" id="lbc-zalo" target="_blank" rel="noopener"><span class="d"></span><span data-i18n="contact.zalo">Zalo</span></a>
@@ -115,6 +115,15 @@
       <a class="lb-contact" id="lbc-ig" target="_blank" rel="noopener"><span class="d"></span>Instagram</a>
     </div>
   </div>
+</div>
+
+<!-- Khung xem ảnh phóng to (zoom) -->
+<div class="zoom" id="zoom" role="dialog" aria-modal="true">
+  <button class="zoom-close" id="zoom-close" aria-label="Đóng">✕</button>
+  <div class="zoom-stage" id="zoom-stage">
+    <img id="zoom-img" alt="" draggable="false">
+  </div>
+  <div class="zoom-hint" id="zoom-hint"></div>
 </div>
 
 <!-- Nút liên hệ nổi -->
@@ -136,6 +145,7 @@
     initLang();
     initFab();
     initLightbox();
+    initZoom();
     initLightboxContacts();
     // footer links
     document.getElementById("fab-fb-2").href = CONTACT.facebook;

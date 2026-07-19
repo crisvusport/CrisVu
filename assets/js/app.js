@@ -154,4 +154,114 @@ function initLightbox(){
     if(e.key==="ArrowLeft" && gal) gal.scrollBy({left:-gal.clientWidth, behavior:"smooth"});
     if(e.key==="ArrowRight" && gal) gal.scrollBy({left: gal.clientWidth, behavior:"smooth"});
   });
+
+  // chạm/bấm vào ảnh -> mở khung phóng to (chỉ với ảnh thật)
+  if(gal) gal.addEventListener("click", e => {
+    if(e.target.closest(".lb-nav")) return;
+    const im = e.target.closest(".media-wrap img");
+    if(im && im.getAttribute("src")) openZoom(im.src);
+  });
+}
+
+/* ==========================================================
+   ZOOM ẢNH: nền tối, ảnh giữa màn hình, phóng to & kéo
+   - Điện thoại: chụm 2 ngón / nhấp đúp để phóng to, kéo để di chuyển
+   - Máy tính: lăn chuột / nhấp đúp để phóng to, kéo để di chuyển
+   ========================================================== */
+function initZoom(){
+  const zoom = document.getElementById("zoom");
+  if(!zoom) return;
+  const stage = document.getElementById("zoom-stage");
+  const img = document.getElementById("zoom-img");
+  const closeBtn = document.getElementById("zoom-close");
+  const hint = document.getElementById("zoom-hint");
+
+  let scale = 1, tx = 0, ty = 0;
+  let baseW = 0, baseH = 0;
+  const MIN = 1, MAX = 5;
+  const pointers = new Map();
+  let startDist = 0, startScale = 1;
+  let panStart = null;
+  let lastTap = 0;
+
+  function apply(){ img.style.transform = `translate(${tx}px, ${ty}px) scale(${scale})`; }
+  function measure(){
+    const r = img.getBoundingClientRect();
+    baseW = r.width / scale; baseH = r.height / scale;
+  }
+  function clampPan(){
+    const maxX = Math.max(0, (baseW * scale - window.innerWidth) / 2 + 30);
+    const maxY = Math.max(0, (baseH * scale - window.innerHeight) / 2 + 30);
+    tx = Math.min(maxX, Math.max(-maxX, tx));
+    ty = Math.min(maxY, Math.max(-maxY, ty));
+  }
+  function setScale(s){
+    scale = Math.min(MAX, Math.max(MIN, s));
+    if(scale === 1){ tx = 0; ty = 0; }
+    clampPan(); apply();
+  }
+
+  window.openZoom = (src) => {
+    img.src = src;
+    scale = 1; tx = 0; ty = 0; apply();
+    if(hint) hint.textContent = t("zoom.hint");
+    zoom.classList.add("open");
+    img.onload = () => { measure(); };
+  };
+  function closeZoom(){ zoom.classList.remove("open"); img.src = ""; scale = 1; tx = 0; ty = 0; }
+
+  closeBtn.addEventListener("click", closeZoom);
+  zoom.addEventListener("click", e => { if(e.target === zoom || e.target === stage){ if(scale === 1) closeZoom(); } });
+  document.addEventListener("keydown", e => { if(e.key === "Escape" && zoom.classList.contains("open")) closeZoom(); });
+
+  // lăn chuột để phóng to (máy tính)
+  stage.addEventListener("wheel", e => {
+    e.preventDefault();
+    setScale(scale * (e.deltaY < 0 ? 1.15 : 1/1.15));
+  }, { passive:false });
+
+  function dist(a,b){ return Math.hypot(a.x-b.x, a.y-b.y); }
+
+  let lastPointerType = "mouse";
+  stage.addEventListener("pointerdown", e => {
+    lastPointerType = e.pointerType || "mouse";
+    pointers.set(e.pointerId, {x:e.clientX, y:e.clientY});
+    if(pointers.size === 1){
+      panStart = { x:e.clientX - tx, y:e.clientY - ty };
+      if(e.pointerType === "touch"){   // điện thoại: chạm 2 lần để phóng to
+        const now = Date.now();
+        if(now - lastTap < 300){ setScale(scale > 1 ? 1 : 2.5); lastTap = 0; }
+        else lastTap = now;
+      }
+    } else if(pointers.size === 2){
+      const p = [...pointers.values()];
+      startDist = dist(p[0], p[1]);
+      startScale = scale;
+    }
+  });
+  // máy tính: nhấp đúp để phóng to / thu nhỏ
+  stage.addEventListener("dblclick", () => {
+    if(lastPointerType === "touch") return;
+    setScale(scale > 1 ? 1 : 2.5);
+  });
+  window.addEventListener("pointermove", e => {
+    if(!pointers.has(e.pointerId)) return;
+    pointers.set(e.pointerId, {x:e.clientX, y:e.clientY});
+    const p = [...pointers.values()];
+    if(pointers.size === 2){
+      setScale(startScale * dist(p[0], p[1]) / startDist);
+    } else if(pointers.size === 1 && scale > 1 && panStart){
+      tx = e.clientX - panStart.x;
+      ty = e.clientY - panStart.y;
+      clampPan(); apply();
+    }
+  });
+  function up(e){
+    if(!pointers.has(e.pointerId)) return;
+    pointers.delete(e.pointerId);
+    if(pointers.size === 1){ const p = [...pointers.values()][0]; panStart = { x:p.x - tx, y:p.y - ty }; }
+    if(scale <= 1){ tx = 0; ty = 0; apply(); }
+  }
+  window.addEventListener("pointerup", up);
+  window.addEventListener("pointercancel", up);
 }

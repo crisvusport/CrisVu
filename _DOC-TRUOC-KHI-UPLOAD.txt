@@ -1,2 +1,5 @@
 GÓI CHỈ CHỨA FILE GIAO DIỆN — KHÔNG có data/products.json, KHÔNG có images/.
 Upload đè toàn bộ nội dung này lên GitHub. Sản phẩm & ảnh của bạn được giữ nguyên.
+
+Bản này thêm: bấm vào ảnh trong khung chi tiết -> mở khung phóng to (zoom).
+Và đã bỏ dòng "Ảnh minh hoạ trong bản demo..." ở footer.

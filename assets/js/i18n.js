@@ -59,6 +59,8 @@ const I18N = {
     "detail.sizes": "Size có sẵn",
     "detail.order": "Nhắn để hỏi giá & đặt hàng",
     "detail.swipe": "Vuốt để xem mặt trước / sau / chi tiết",
+    "detail.tapzoom": "Chạm vào ảnh để phóng to",
+    "zoom.hint": "Chụm 2 ngón hoặc nhấp đúp để phóng to · kéo để di chuyển",
 
     "contact.title": "Liên hệ đặt hàng",
     "contact.zalo": "Zalo",
@@ -136,6 +138,8 @@ const I18N = {
     "detail.sizes": "Available sizes",
     "detail.order": "Message to ask price & order",
     "detail.swipe": "Swipe for front / back / detail",
+    "detail.tapzoom": "Tap the image to zoom",
+    "zoom.hint": "Pinch or double-tap to zoom · drag to move",
 
     "contact.title": "Order & contact",
     "contact.zalo": "Zalo",
