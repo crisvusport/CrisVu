@@ -83,11 +83,23 @@
       <div class="fld">
         <span class="fld-lbl">Ảnh sản phẩm</span>
         <div class="img-row">
-          <label class="filebox">Mặt trước<input type="file" name="front" accept="image/*"><span class="cur" id="cur-front"></span></label>
-          <label class="filebox">Mặt sau<input type="file" name="back" accept="image/*"><span class="cur" id="cur-back"></span></label>
-          <label class="filebox">Chi tiết (chọn nhiều)<input type="file" name="detail" accept="image/*" multiple><span class="cur" id="cur-detail"></span></label>
+          <div class="filebox">
+            <span class="fb-title">Mặt trước</span>
+            <input type="file" id="in-front" accept="image/*">
+            <div class="cur" id="cur-front"></div>
+          </div>
+          <div class="filebox">
+            <span class="fb-title">Mặt sau</span>
+            <input type="file" id="in-back" accept="image/*">
+            <div class="cur" id="cur-back"></div>
+          </div>
+          <div class="filebox">
+            <span class="fb-title">Chi tiết (chọn nhiều)</span>
+            <input type="file" id="in-detail" accept="image/*" multiple>
+            <div class="cur" id="cur-detail"></div>
+          </div>
         </div>
-        <p class="muted small">Khi sửa: để trống ô ảnh nào thì giữ nguyên ảnh cũ ô đó. Ảnh tự động nén nhẹ để web tải nhanh.</p>
+        <p class="muted small">Chọn ảnh xong sẽ hiện ảnh xem trước. Bấm dấu ✕ trên ảnh để bỏ/chọn lại. Khi sửa: để trống ô ảnh nào thì giữ nguyên ảnh cũ ô đó. Ảnh tự động nén nhẹ để web tải nhanh.</p>
       </div>
 
       <div class="status" id="status"></div>

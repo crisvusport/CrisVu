@@ -21,6 +21,59 @@ let PRODUCTS = [];
 let productsSha = null;
 let editingId = null;   // null = đang thêm mới; có giá trị = đang sửa
 
+/* Ảnh đang chọn (chưa lưu) — cho phép xem trước và bỏ từng ảnh */
+let pendingFront = null;
+let pendingBack = null;
+let pendingDetails = [];
+function resetPendings(){ pendingFront = null; pendingBack = null; pendingDetails = []; }
+
+/* Vẽ ảnh xem trước cho 1 ô (front/back) */
+function slotPreviewHTML(kind){
+  const p = editingId ? PRODUCTS.find(x=>x.id===editingId) : null;
+  const pending = kind === "front" ? pendingFront : pendingBack;
+  if(pending){
+    const url = URL.createObjectURL(pending);
+    return `<span class="pv"><img src="${url}"><button type="button" class="pv-x" data-clear="${kind}">✕</button></span><span class="cur-ok">ảnh mới</span>`;
+  }
+  if(p && (p.images||[]).includes(kind)){
+    return `<img class="thumb" src="images/${p.id}-${kind}.jpg" onerror="this.style.display='none'"><span class="cur-ok">ảnh hiện tại</span>`;
+  }
+  return "";
+}
+/* Vẽ ảnh xem trước cho ô chi tiết (nhiều ảnh) */
+function detailPreviewHTML(){
+  const p = editingId ? PRODUCTS.find(x=>x.id===editingId) : null;
+  if(pendingDetails.length){
+    return pendingDetails.map((f,i)=>{
+      const url = URL.createObjectURL(f);
+      return `<span class="pv"><img src="${url}"><button type="button" class="pv-x" data-cleardetail="${i}">✕</button></span>`;
+    }).join("") + `<span class="cur-ok">${pendingDetails.length} ảnh mới</span>`;
+  }
+  if(p){
+    const details = (p.images||[]).filter(k=>k.startsWith("detail"));
+    if(details.length){
+      return details.map(k=>`<img class="thumb" src="images/${p.id}-${k}.jpg" onerror="this.style.display='none'">`).join("")
+             + `<span class="cur-ok">${details.length} ảnh hiện tại</span>`;
+    }
+  }
+  return "";
+}
+function renderImagePreviews(){
+  document.getElementById("cur-front").innerHTML = slotPreviewHTML("front");
+  document.getElementById("cur-back").innerHTML = slotPreviewHTML("back");
+  document.getElementById("cur-detail").innerHTML = detailPreviewHTML();
+  document.querySelectorAll("[data-clear]").forEach(b => b.addEventListener("click", () => {
+    const k = b.dataset.clear;
+    if(k === "front"){ pendingFront = null; document.getElementById("in-front").value = ""; }
+    if(k === "back"){ pendingBack = null; document.getElementById("in-back").value = ""; }
+    renderImagePreviews();
+  }));
+  document.querySelectorAll("[data-cleardetail]").forEach(b => b.addEventListener("click", () => {
+    pendingDetails.splice(Number(b.dataset.cleardetail), 1);
+    renderImagePreviews();
+  }));
+}
+
 /* ---------- Token (chỉ trong phiên) ---------- */
 const tok = {
   get: () => sessionStorage.getItem("cv_token") || "",
@@ -175,9 +228,11 @@ function openForm(id){
   editingId = id || null;
   const f = document.forms["prod-form"];
   f.reset();
+  resetPendings();
+  document.getElementById("in-front").value = "";
+  document.getElementById("in-back").value = "";
+  document.getElementById("in-detail").value = "";
   document.getElementById("form-title").textContent = id ? "Sửa sản phẩm" : "Thêm sản phẩm mới";
-  // reset ảnh cũ
-  ["cur-front","cur-back","cur-detail"].forEach(x=>document.getElementById(x).textContent="");
 
   if(id){
     const p = PRODUCTS.find(x=>x.id===id);
@@ -187,16 +242,8 @@ function openForm(id){
     f.sizes.value = (p.sizes||[]).join(", ");
     f.featured.checked = !!p.featured;
     document.querySelectorAll("input[name='special']").forEach(cb => cb.checked = (p.special||[]).includes(cb.value));
-    // hiển thị ảnh đang có (kèm ảnh thu nhỏ để thấy rõ ảnh vẫn còn)
-    const imgs = p.images||[];
-    const thumb = (key) => `<img class="thumb" src="images/${id}-${key}.jpg" alt="" onerror="this.style.display='none'">`;
-    document.getElementById("cur-front").innerHTML = imgs.includes("front") ? `${thumb("front")}<span class="cur-ok">✓ đang có ảnh</span>` : "";
-    document.getElementById("cur-back").innerHTML  = imgs.includes("back")  ? `${thumb("back")}<span class="cur-ok">✓ đang có ảnh</span>` : "";
-    const details = imgs.filter(k=>k.startsWith("detail"));
-    document.getElementById("cur-detail").innerHTML = details.length
-      ? details.map(thumb).join("") + `<span class="cur-ok">✓ đang có ${details.length} ảnh</span>`
-      : "";
   }
+  renderImagePreviews();
   hide("dash-main"); show("form-screen");
   window.scrollTo(0,0);
 }
@@ -234,11 +281,11 @@ async function submitForm(e){
     }
     newId = editingId ? null : id;
 
-    // ẢNH
+    // ẢNH (lấy từ danh sách đang chọn, đã cho phép xem trước/bỏ)
     let images = editingId ? [...(product.images||[])] : [];
-    const frontFile = f.front.files[0];
-    const backFile = f.back.files[0];
-    const detailFiles = [...f.detail.files];
+    const frontFile = pendingFront;
+    const backFile = pendingBack;
+    const detailFiles = pendingDetails;
 
     if(!editingId && !frontFile){ throw new Error("Cần ít nhất ảnh mặt trước cho sản phẩm mới."); }
 
@@ -261,6 +308,7 @@ async function submitForm(e){
     await saveProductsJson(editingId ? `Sửa ${id}` : `Thêm ${id}`);
 
     setStatus("Đã lưu! Web sẽ cập nhật sau khoảng 1 phút.","ok");
+    resetPendings();
     renderList();
     setTimeout(closeForm, 1200);
   }catch(err){
@@ -314,6 +362,17 @@ function initForm(){
   document.forms["prod-form"].addEventListener("submit", submitForm);
   document.getElementById("cancel-btn").addEventListener("click", closeForm);
   document.getElementById("add-btn").addEventListener("click", ()=>openForm(null));
+
+  // chọn ảnh -> lưu tạm + xem trước
+  document.getElementById("in-front").addEventListener("change", e => {
+    pendingFront = e.target.files[0] || null; renderImagePreviews();
+  });
+  document.getElementById("in-back").addEventListener("change", e => {
+    pendingBack = e.target.files[0] || null; renderImagePreviews();
+  });
+  document.getElementById("in-detail").addEventListener("change", e => {
+    pendingDetails.push(...e.target.files); e.target.value = ""; renderImagePreviews();
+  });
 }
 
 document.addEventListener("DOMContentLoaded", () => {
