@@ -43,30 +43,6 @@
     "featured": false
   },
   {
-    "id": "mnu-retro-1999-fan",
-    "loai": "ao",
-    "team": "Manchester United",
-    "category": "retro",
-    "season": "1999",
-    "kit": "home",
-    "version": "fan",
-    "special": [
-      "retro"
-    ],
-    "accent": "#DA291C",
-    "sizes": [
-      "M",
-      "L",
-      "XL"
-    ],
-    "images": [
-      "front",
-      "back",
-      "detail"
-    ],
-    "featured": true
-  },
-  {
     "id": "bra-retro-1994-fan",
     "loai": "ao",
     "team": "Brazil",
