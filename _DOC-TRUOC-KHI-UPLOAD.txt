@@ -1,0 +1,10 @@
+GÓI NÀY CHỈ CHỨA FILE GIAO DIỆN (code) — KHÔNG chứa dữ liệu sản phẩm.
+
+Cách dùng: upload đè toàn bộ nội dung trong thư mục này lên GitHub như mọi lần.
+Vì gói KHÔNG có file data/products.json và KHÔNG có thư mục images/,
+nên danh sách sản phẩm và ảnh bạn đã thêm qua trang quản trị sẽ ĐƯỢC GIỮ NGUYÊN.
+
+Các file trong gói:
+- index.html, catalog.html, about.html, admin.html
+- assets/css/style.css
+- assets/js/ (app.js, catalog.js, i18n.js, admin.js)

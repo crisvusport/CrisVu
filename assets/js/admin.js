@@ -187,12 +187,15 @@ function openForm(id){
     f.sizes.value = (p.sizes||[]).join(", ");
     f.featured.checked = !!p.featured;
     document.querySelectorAll("input[name='special']").forEach(cb => cb.checked = (p.special||[]).includes(cb.value));
-    // hiển thị ảnh đang có
+    // hiển thị ảnh đang có (kèm ảnh thu nhỏ để thấy rõ ảnh vẫn còn)
     const imgs = p.images||[];
-    document.getElementById("cur-front").textContent = imgs.includes("front") ? "✓ đang có ảnh mặt trước" : "";
-    document.getElementById("cur-back").textContent = imgs.includes("back") ? "✓ đang có ảnh mặt sau" : "";
-    const dcount = imgs.filter(k=>k.startsWith("detail")).length;
-    document.getElementById("cur-detail").textContent = dcount ? `✓ đang có ${dcount} ảnh chi tiết` : "";
+    const thumb = (key) => `<img class="thumb" src="images/${id}-${key}.jpg" alt="" onerror="this.style.display='none'">`;
+    document.getElementById("cur-front").innerHTML = imgs.includes("front") ? `${thumb("front")}<span class="cur-ok">✓ đang có ảnh</span>` : "";
+    document.getElementById("cur-back").innerHTML  = imgs.includes("back")  ? `${thumb("back")}<span class="cur-ok">✓ đang có ảnh</span>` : "";
+    const details = imgs.filter(k=>k.startsWith("detail"));
+    document.getElementById("cur-detail").innerHTML = details.length
+      ? details.map(thumb).join("") + `<span class="cur-ok">✓ đang có ${details.length} ảnh</span>`
+      : "";
   }
   hide("dash-main"); show("form-screen");
   window.scrollTo(0,0);
