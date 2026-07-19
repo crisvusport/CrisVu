@@ -1,29 +1,5 @@
 [
   {
-    "id": "rma-home-2526-player",
-    "loai": "ao",
-    "team": "Real Madrid",
-    "category": "clb",
-    "season": "2025/26",
-    "kit": "home",
-    "version": "player",
-    "special": [],
-    "accent": "#FEBE10",
-    "sizes": [
-      "S",
-      "M",
-      "L",
-      "XL",
-      "XXL"
-    ],
-    "images": [
-      "front",
-      "back",
-      "detail"
-    ],
-    "featured": true
-  },
-  {
     "id": "mci-home-2526-fan",
     "loai": "ao",
     "team": "Manchester City",
