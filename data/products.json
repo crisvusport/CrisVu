@@ -1,26 +1,5 @@
 [
   {
-    "id": "mci-home-2526-fan",
-    "loai": "ao",
-    "team": "Manchester City",
-    "category": "clb",
-    "season": "2025/26",
-    "kit": "home",
-    "version": "fan",
-    "special": [],
-    "accent": "#6CABDD",
-    "sizes": [
-      "M",
-      "L",
-      "XL"
-    ],
-    "images": [
-      "front",
-      "back"
-    ],
-    "featured": true
-  },
-  {
     "id": "bar-away-2526-player",
     "loai": "ao",
     "team": "Barcelona",
