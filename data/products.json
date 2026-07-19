@@ -1,52 +1,5 @@
 [
   {
-    "id": "ars-longsleeve-2526-fan",
-    "loai": "ao",
-    "team": "Arsenal",
-    "category": "clb",
-    "season": "2025/26",
-    "kit": "home",
-    "version": "fan",
-    "special": [
-      "dai-tay"
-    ],
-    "accent": "#EF0107",
-    "sizes": [
-      "M",
-      "L",
-      "XL"
-    ],
-    "images": [
-      "front",
-      "back"
-    ],
-    "featured": false
-  },
-  {
-    "id": "vie-home-2026-fan",
-    "loai": "ao",
-    "team": "Việt Nam",
-    "category": "doi-tuyen",
-    "season": "2026",
-    "kit": "home",
-    "version": "fan",
-    "special": [],
-    "accent": "#DA251D",
-    "sizes": [
-      "S",
-      "M",
-      "L",
-      "XL",
-      "XXL"
-    ],
-    "images": [
-      "front",
-      "back",
-      "detail"
-    ],
-    "featured": true
-  },
-  {
     "id": "bra-home-2026-player",
     "loai": "ao",
     "team": "Brazil",
