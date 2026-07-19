@@ -21,28 +21,6 @@
     "featured": true
   },
   {
-    "id": "arg-home-2026-fan",
-    "loai": "ao",
-    "team": "Argentina",
-    "category": "doi-tuyen",
-    "season": "2026",
-    "kit": "home",
-    "version": "fan",
-    "special": [],
-    "accent": "#75AADB",
-    "sizes": [
-      "S",
-      "M",
-      "L"
-    ],
-    "images": [
-      "front",
-      "back",
-      "detail"
-    ],
-    "featured": false
-  },
-  {
     "id": "portugal-away-2006-fan",
     "loai": "ao",
     "category": "doi-tuyen",
