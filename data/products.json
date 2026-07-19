@@ -474,5 +474,31 @@
       "detail-4",
       "detail-5"
     ]
+  },
+  {
+    "id": "colombia-away-2026-player",
+    "loai": "ao",
+    "category": "doi-tuyen",
+    "team": "Colombia",
+    "season": "2026",
+    "kit": "away",
+    "version": "player",
+    "special": [],
+    "accent": "#c9a24b",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "featured": false,
+    "images": [
+      "front",
+      "back",
+      "detail",
+      "detail-2",
+      "detail-3"
+    ]
   }
 ]
