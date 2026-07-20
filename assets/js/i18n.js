@@ -34,7 +34,9 @@ const I18N = {
     "filter.none": "Không tìm thấy sản phẩm phù hợp.",
 
     "loai.ao": "Áo",
+    "loai.ao-khoac": "Áo khoác",
     "loai.quan": "Quần",
+    "loai.bo-quan-ao": "Bộ quần áo",
     "loai.bo-tre-em": "Bộ trẻ em",
 
     "kit.home": "Sân nhà",
@@ -49,6 +51,7 @@ const I18N = {
     "special.retro": "Retro",
     "special.dai-tay": "Dài tay",
     "special.crop-top": "Crop top",
+    "special.special-edition": "Special Edition",
     "special.ao-tap": "Áo tập",
     "filter.season.all": "Tất cả mùa",
 
@@ -113,7 +116,9 @@ const I18N = {
     "filter.none": "No products match your search.",
 
     "loai.ao": "Shirt",
+    "loai.ao-khoac": "Jacket",
     "loai.quan": "Shorts",
+    "loai.bo-quan-ao": "Full set",
     "loai.bo-tre-em": "Kids kit",
 
     "kit.home": "Home",
@@ -128,6 +133,7 @@ const I18N = {
     "special.retro": "Retro",
     "special.dai-tay": "Long sleeve",
     "special.crop-top": "Crop top",
+    "special.special-edition": "Special Edition",
     "special.ao-tap": "Training",
     "filter.season.all": "All seasons",
 

@@ -5,10 +5,10 @@
 
 /* Danh sách lựa chọn cố định cho bộ lọc (luôn hiện đủ, không phụ thuộc dữ liệu) */
 const FILTER_VALUES = {
-  loai:    ["ao", "quan", "bo-tre-em"],
+  loai:    ["ao", "ao-khoac", "quan", "bo-quan-ao", "bo-tre-em"],
   kit:     ["home", "away", "third", "ao-tap"],
   version: ["fan", "player"],
-  special: ["retro", "dai-tay", "crop-top"]
+  special: ["retro", "dai-tay", "crop-top", "special-edition"]
 };
 
 const STATE = {

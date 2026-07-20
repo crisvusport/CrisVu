@@ -10,11 +10,11 @@ const API = `https://api.github.com/repos/${REPO.owner}/${REPO.name}`;
 
 /* ---- Danh mục lựa chọn (khớp với website) ---- */
 const OPT = {
-  loai: [["ao","Áo"],["quan","Quần"],["bo-tre-em","Bộ trẻ em"]],
+  loai: [["ao","Áo"],["ao-khoac","Áo khoác"],["quan","Quần"],["bo-quan-ao","Bộ quần áo"],["bo-tre-em","Bộ trẻ em"]],
   category: [["clb","CLB"],["doi-tuyen","Đội tuyển"],["retro","Retro"]],
   kit: [["home","Sân nhà"],["away","Sân khách"],["third","Third"],["ao-tap","Áo tập"]],
   version: [["fan","Fan"],["player","Player"]],
-  special: [["retro","Retro"],["dai-tay","Dài tay"],["crop-top","Crop top"]]
+  special: [["retro","Retro"],["dai-tay","Dài tay"],["crop-top","Crop top"],["special-edition","Special Edition"]]
 };
 
 let PRODUCTS = [];
