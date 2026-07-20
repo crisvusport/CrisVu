@@ -13,7 +13,7 @@ const OPT = {
   loai: [["ao","Áo"],["ao-khoac","Áo khoác"],["quan","Quần"],["bo-quan-ao","Bộ quần áo"],["bo-tre-em","Bộ trẻ em"]],
   category: [["clb","CLB"],["doi-tuyen","Đội tuyển"],["retro","Retro"]],
   kit: [["home","Sân nhà"],["away","Sân khách"],["third","Third"],["ao-tap","Áo tập"]],
-  version: [["fan","Fan"],["player","Player"]],
+  version: [["fan","Fan"],["player","Player"],["ao-gio","Áo gió"],["ao-ni","Áo nỉ"]],
   special: [["retro","Retro"],["dai-tay","Dài tay"],["crop-top","Crop top"],["special-edition","Special Edition"]]
 };
 
@@ -405,6 +405,9 @@ function initForm(){
   fillSelect(document.forms["prod-form"].category, OPT.category);
   fillSelect(document.forms["prod-form"].kit, OPT.kit);
   fillSelect(document.forms["prod-form"].version, OPT.version);
+  // thêm lựa chọn để trống (cho áo khoác / bộ đồ không có Fan/Player)
+  const vsel = document.forms["prod-form"].version;
+  vsel.insertAdjacentHTML("afterbegin", '<option value="">— Không có (áo khoác / bộ đồ) —</option>');
   document.getElementById("special-boxes").innerHTML = OPT.special.map(([v,l])=>
     `<label class="cbox"><input type="checkbox" name="special" value="${v}"> ${l}</label>`
   ).join("");

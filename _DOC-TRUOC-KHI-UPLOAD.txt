@@ -1,6 +1,7 @@
 GÓI CHỈ CHỨA FILE GIAO DIỆN — KHÔNG có data/products.json, KHÔNG có images/.
 Upload đè toàn bộ nội dung này lên GitHub. Sản phẩm & ảnh của bạn được giữ nguyên.
 
-Bản này thêm:
-- Loại "Bộ quần áo" (cho bộ training cả bộ).
-- Kiểu đặc biệt "Special Edition".
+Bản này:
+- Phiên bản thêm mục "— Không có —" (để trống cho áo khoác / bộ đồ).
+- Phiên bản thêm "Áo gió" và "Áo nỉ".
+- Khi phiên bản để trống, tên sản phẩm không hiện phần phiên bản.

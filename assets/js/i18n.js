@@ -47,6 +47,8 @@ const I18N = {
 
     "version.fan": "Fan",
     "version.player": "Player",
+    "version.ao-gio": "Áo gió",
+    "version.ao-ni": "Áo nỉ",
 
     "special.retro": "Retro",
     "special.dai-tay": "Dài tay",
@@ -129,6 +131,8 @@ const I18N = {
 
     "version.fan": "Fan",
     "version.player": "Player",
+    "version.ao-gio": "Windbreaker",
+    "version.ao-ni": "Sweatshirt",
 
     "special.retro": "Retro",
     "special.dai-tay": "Long sleeve",

@@ -7,7 +7,7 @@
 const FILTER_VALUES = {
   loai:    ["ao", "ao-khoac", "quan", "bo-quan-ao", "bo-tre-em"],
   kit:     ["home", "away", "third", "ao-tap"],
-  version: ["fan", "player"],
+  version: ["fan", "player", "ao-gio", "ao-ni"],
   special: ["retro", "dai-tay", "crop-top", "special-edition"]
 };
 
