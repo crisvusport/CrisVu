@@ -677,5 +677,35 @@
       "detail-4",
       "detail-5"
     ]
+  },
+  {
+    "id": "ac-milan-home-1995-96-fan",
+    "loai": "ao",
+    "category": "clb",
+    "team": "AC Milan",
+    "season": "1995/96",
+    "kit": "home",
+    "version": "fan",
+    "special": [
+      "retro"
+    ],
+    "accent": "#c9a24b",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "featured": false,
+    "images": [
+      "front",
+      "back",
+      "detail",
+      "detail-2",
+      "detail-3",
+      "detail-4",
+      "detail-5"
+    ]
   }
 ]
