@@ -44,12 +44,29 @@ function matchProduct(p){
     if(!noAccent(p.season).includes(noAccent(STATE.season))) return false;
   }
   if(STATE.q){
-    // tìm trong: đội, mùa, và toàn bộ tên (loại, mẫu áo, phiên bản, kiểu đặc biệt) — cả có dấu lẫn không dấu
-    const hay = noAccent(p.team + " " + p.season + " " + productName(p));
     const terms = noAccent(STATE.q).split(/\s+/).filter(Boolean);
+    const hay = searchHaystack(p);
     if(!terms.every(term => hay.includes(term))) return false;
   }
   return true;
+}
+
+/* Gom TẤT CẢ chữ có thể tìm của 1 sản phẩm: đội, mùa, và nhãn loại/mẫu áo/phiên bản/kiểu đặc biệt
+   — cả tiếng Việt (có dấu & không dấu) lẫn tiếng Anh — để người Việt gõ kiểu gì cũng ra. */
+function searchHaystack(p){
+  const bits = [p.team, p.season, p.loai, p.kit, p.version];
+  (p.special || []).forEach(s => bits.push(s));
+  const addLabel = (kind, val) => {
+    if(!val) return;
+    const k = kind + "." + val;
+    if(I18N.vi && I18N.vi[k]) bits.push(I18N.vi[k]);
+    if(I18N.en && I18N.en[k]) bits.push(I18N.en[k]);
+  };
+  addLabel("loai", p.loai);
+  addLabel("kit", p.kit);
+  addLabel("version", p.version);
+  (p.special || []).forEach(s => addLabel("special", s));
+  return noAccent(bits.filter(Boolean).join(" "));
 }
 
 function renderCatalog(){

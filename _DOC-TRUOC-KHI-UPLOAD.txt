@@ -1,9 +1,10 @@
 GÓI CHỈ CHỨA FILE GIAO DIỆN — KHÔNG có data/products.json, KHÔNG có images/.
 Upload đè toàn bộ nội dung này lên GitHub. Sản phẩm & ảnh của bạn được giữ nguyên.
 
-QUAN TRỌNG — bản này thêm "chống cache":
-Từ giờ mỗi khi web cập nhật, trình duyệt sẽ tự tải bản mới nhất
-(không còn bị kẹt ở bản cũ như trước). Đây là lý do khiến các nâng cấp
-trước (tìm 'dai tay', lọc áo khoác, ô mùa giải dropdown) chưa hiện ra trên máy bạn.
+Bản này:
+- Tối ưu tìm kiếm cho người Việt: gõ có dấu / không dấu / tiếng Anh đều ra
+  (vd: "ao khoac", "áo khoác", "jacket", "san khach", "ao gio"...).
+- Vẫn giữ chống cache (đã bump phiên bản mới).
 
-Sau khi upload xong, mở web và bấm tải lại là sẽ thấy đầy đủ.
+LƯU Ý về áo khoác lọc ra 0: do sản phẩm đang lưu SAI Loại (lưu thành "Áo").
+Cần vào Quản trị -> Sửa từng áo khoác -> đổi Loại thành "Áo khoác" -> Lưu.
