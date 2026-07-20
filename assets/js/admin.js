@@ -232,6 +232,12 @@ function label(kind, val){
 function renderList(){
   const list = document.getElementById("prod-list");
   document.getElementById("prod-count").textContent = PRODUCTS.length;
+  // gợi ý mùa giải đã có (để nhập nhất quán)
+  const dl = document.getElementById("season-list");
+  if(dl){
+    const seasons = [...new Set(PRODUCTS.map(p => p.season).filter(Boolean))].sort().reverse();
+    dl.innerHTML = seasons.map(s => `<option value="${s}">`).join("");
+  }
   if(PRODUCTS.length === 0){ list.innerHTML = `<p class="muted">Chưa có sản phẩm nào.</p>`; return; }
   list.innerHTML = PRODUCTS.map(p => {
     const name = [label("loai",p.loai), p.team, p.season, label("kit",p.kit),

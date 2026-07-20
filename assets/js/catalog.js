@@ -22,6 +22,13 @@ const STATE = {
   season: null
 };
 
+/* Bỏ dấu tiếng Việt để tìm kiếm dễ (gõ "dai tay" ra "Dài tay") */
+function noAccent(s){
+  return (s || "").toString().toLowerCase()
+    .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    .replace(/đ/g, "d");
+}
+
 function matchProduct(p){
   if(STATE.category === "retro"){
     if(!(p.special||[]).includes("retro")) return false;
@@ -34,11 +41,13 @@ function matchProduct(p){
   if(STATE.version.length && !STATE.version.includes(p.version)) return false;
   if(STATE.special.length && !STATE.special.some(s => (p.special||[]).includes(s))) return false;
   if(STATE.season){
-    if(!String(p.season).toLowerCase().includes(STATE.season.toLowerCase())) return false;
+    if(!noAccent(p.season).includes(noAccent(STATE.season))) return false;
   }
   if(STATE.q){
-    const hay = (p.team + " " + p.season + " " + productName(p)).toLowerCase();
-    if(!hay.includes(STATE.q.toLowerCase())) return false;
+    // tìm trong: đội, mùa, và toàn bộ tên (loại, mẫu áo, phiên bản, kiểu đặc biệt) — cả có dấu lẫn không dấu
+    const hay = noAccent(p.team + " " + p.season + " " + productName(p));
+    const terms = noAccent(STATE.q).split(/\s+/).filter(Boolean);
+    if(!terms.every(term => hay.includes(term))) return false;
   }
   return true;
 }
@@ -91,19 +100,44 @@ function buildFilters(){
   buildSeasonSelect();
 }
 
-/* Mùa giải: ô gõ tìm + gợi ý (gõ "2025" gợi ý "2025/26") — bao nhiêu mùa cũng gọn */
+/* Mùa giải: ô gõ tìm + dropdown gợi ý bấm chọn — hoạt động tốt cả điện thoại */
 function buildSeasonSelect(){
   const input = document.getElementById("f-season-input");
-  const dl = document.getElementById("season-list");
-  if(!input || !dl) return;
-  const seasons = [...new Set(PRODUCTS.map(p=>p.season).filter(Boolean))].sort().reverse();
-  dl.innerHTML = seasons.map(s => `<option value="${s}"></option>`).join("");
+  const menu = document.getElementById("season-menu");
+  if(!input || !menu) return;
+  const seasons = [...new Set(PRODUCTS.map(p => p.season).filter(Boolean))].sort().reverse();
   input.value = STATE.season || "";
-  input.oninput = () => {
+
+  function renderMenu(filter){
+    const f = noAccent(filter || "");
+    const list = seasons.filter(s => !f || noAccent(s).includes(f));
+    let html = `<div class="season-item" data-val="">Tất cả mùa</div>`;
+    html += list.map(s => `<div class="season-item" data-val="${s}">${s}</div>`).join("");
+    if(!list.length && f) html += `<div class="season-item is-hint">Không có mùa này — vẫn lọc theo "${filter}"</div>`;
+    menu.innerHTML = html;
+  }
+  const open = () => { renderMenu(input.value); menu.classList.add("open"); };
+  const close = () => menu.classList.remove("open");
+
+  input.addEventListener("focus", open);
+  input.addEventListener("input", () => {
     STATE.season = input.value.trim() || null;
-    updateFilterCount();
-    renderCatalog();
-  };
+    renderMenu(input.value); menu.classList.add("open");
+    updateFilterCount(); renderCatalog();
+  });
+  input.addEventListener("keydown", e => { if(e.key === "Enter"){ e.preventDefault(); close(); } });
+  menu.addEventListener("click", e => {
+    const item = e.target.closest(".season-item");
+    if(!item || item.classList.contains("is-hint")) return;
+    const val = item.dataset.val;
+    input.value = val;
+    STATE.season = val || null;
+    close(); updateFilterCount(); renderCatalog();
+  });
+  if(!buildSeasonSelect._bound){
+    document.addEventListener("click", e => { if(!e.target.closest(".season-box")) close(); });
+    buildSeasonSelect._bound = true;
+  }
 }
 
 function fillFilterGroup(containerId, values, stateKey, i18nPrefix){

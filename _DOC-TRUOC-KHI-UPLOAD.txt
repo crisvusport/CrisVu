@@ -1,7 +1,9 @@
 GÓI CHỈ CHỨA FILE GIAO DIỆN — KHÔNG có data/products.json, KHÔNG có images/.
 Upload đè toàn bộ nội dung này lên GitHub. Sản phẩm & ảnh của bạn được giữ nguyên.
 
-Bản này:
-- Phiên bản thêm mục "— Không có —" (để trống cho áo khoác / bộ đồ).
-- Phiên bản thêm "Áo gió" và "Áo nỉ".
-- Khi phiên bản để trống, tên sản phẩm không hiện phần phiên bản.
+QUAN TRỌNG — bản này thêm "chống cache":
+Từ giờ mỗi khi web cập nhật, trình duyệt sẽ tự tải bản mới nhất
+(không còn bị kẹt ở bản cũ như trước). Đây là lý do khiến các nâng cấp
+trước (tìm 'dai tay', lọc áo khoác, ô mùa giải dropdown) chưa hiện ra trên máy bạn.
+
+Sau khi upload xong, mở web và bấm tải lại là sẽ thấy đầy đủ.

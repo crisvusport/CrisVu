@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Be+Vietnam+Pro:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/style.css?v=260720a">
 </head>
 <body>
 
@@ -61,7 +61,7 @@
     <form name="prod-form" class="pform">
       <div class="grid2">
         <label>Đội bóng *<input class="inp" name="team" placeholder="VD: Real Madrid, Việt Nam..." required></label>
-        <label>Mùa giải<input class="inp" name="season" placeholder="VD: 2025/26 hoặc 2026"></label>
+        <label>Mùa giải<input class="inp" name="season" list="season-list" placeholder="VD: 2006/07, 2026/27 hoặc 2006" autocomplete="off"><datalist id="season-list"></datalist></label>
         <label>Danh mục<select class="inp" name="category"></select></label>
         <label>Loại<select class="inp" name="loai"></select></label>
         <label>Mẫu áo<select class="inp" name="kit"></select></label>
@@ -113,6 +113,6 @@
 
 </section>
 
-<script src="assets/js/admin.js"></script>
+<script src="assets/js/admin.js?v=260720a"></script>
 </body>
 </html>
