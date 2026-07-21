@@ -1002,5 +1002,33 @@
       "detail-7",
       "detail-8"
     ]
+  },
+  {
+    "id": "real-madrid-away-2023-24-fan",
+    "loai": "ao",
+    "category": "clb",
+    "team": "Real Madrid",
+    "season": "2023/24",
+    "kit": "away",
+    "version": "fan",
+    "special": [],
+    "accent": "#c9a24b",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "featured": false,
+    "images": [
+      "front",
+      "back",
+      "detail",
+      "detail-2",
+      "detail-3",
+      "detail-4",
+      "detail-5"
+    ]
   }
 ]
