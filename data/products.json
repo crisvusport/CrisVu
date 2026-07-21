@@ -969,5 +969,38 @@
       "detail-6",
       "detail-7"
     ]
+  },
+  {
+    "id": "fc-barcelona-home-2014-15-fan",
+    "loai": "ao",
+    "category": "clb",
+    "team": "FC Barcelona",
+    "season": "2014/15",
+    "kit": "home",
+    "version": "fan",
+    "special": [
+      "retro"
+    ],
+    "accent": "#c9a24b",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "featured": false,
+    "images": [
+      "front",
+      "back",
+      "detail",
+      "detail-2",
+      "detail-3",
+      "detail-4",
+      "detail-5",
+      "detail-6",
+      "detail-7",
+      "detail-8"
+    ]
   }
 ]
