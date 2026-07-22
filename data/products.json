@@ -1124,5 +1124,34 @@
       "detail-5",
       "detail-6"
     ]
+  },
+  {
+    "id": "cape-verde-cabo-verde-home-2026-player",
+    "loai": "ao",
+    "category": "doi-tuyen",
+    "team": "Cape Verde / Cabo Verde",
+    "season": "2026",
+    "kit": "home",
+    "version": "player",
+    "special": [],
+    "accent": "#c9a24b",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "featured": false,
+    "images": [
+      "front",
+      "back",
+      "detail",
+      "detail-2",
+      "detail-3",
+      "detail-4",
+      "detail-5",
+      "detail-6"
+    ]
   }
 ]
