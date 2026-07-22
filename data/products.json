@@ -217,7 +217,7 @@
       "XL",
       "XXL"
     ],
-    "featured": false,
+    "featured": true,
     "images": [
       "front",
       "back",
