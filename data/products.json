@@ -1398,5 +1398,35 @@
       "detail-6",
       "detail-7"
     ]
+  },
+  {
+    "id": "arsenal-fc-home-2026-27-fan",
+    "loai": "ao",
+    "category": "clb",
+    "team": "Arsenal FC",
+    "season": "2026/27",
+    "kit": "home",
+    "version": "fan",
+    "special": [],
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL",
+      "XXXL"
+    ],
+    "featured": false,
+    "images": [
+      "front",
+      "back",
+      "detail",
+      "detail-2",
+      "detail-3",
+      "detail-4",
+      "detail-5",
+      "detail-6",
+      "detail-7"
+    ]
   }
 ]
