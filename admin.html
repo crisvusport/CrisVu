@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Be+Vietnam+Pro:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=260723a">
+<link rel="stylesheet" href="assets/css/style.css?v=260723b">
 </head>
 <body>
 
@@ -52,6 +52,18 @@
       <button class="btn-primary" id="add-btn">+ Thêm sản phẩm</button>
     </div>
     <div class="status" id="status-list"></div>
+
+    <div class="adm-tools">
+      <input class="inp adm-search" id="adm-search" type="search"
+             placeholder="Tìm: đội bóng, mùa giải, loại... (vd: real 2026, ao khoac, retro)" autocomplete="off">
+      <div class="adm-chips" id="adm-cat"></div>
+      <div class="adm-chips" id="adm-loai"></div>
+      <div class="adm-meta">
+        <span id="adm-count" class="muted small"></span>
+        <button class="btn-link" id="adm-clear">Xoá lọc</button>
+      </div>
+    </div>
+
     <div id="prod-list" class="prod-list"></div>
   </div>
 
@@ -73,10 +85,7 @@
         <div id="special-boxes" class="cboxes"></div>
       </div>
 
-      <div class="grid2">
-        <label>Size (cách nhau bằng dấu phẩy)<input class="inp" name="sizes" placeholder="VD: S, M, L, XL, XXL"></label>
-        <label>Màu áo (dùng cho ảnh tạm)<input type="color" class="inp inp-color" name="accent" value="#C9A24B"></label>
-      </div>
+      <label>Size (cách nhau bằng dấu phẩy)<input class="inp" name="sizes" placeholder="VD: S, M, L, XL, XXL"></label>
 
       <label class="cbox big"><input type="checkbox" name="featured"> Đánh dấu là mẫu nổi bật (hiện ở trang chủ)</label>
 
@@ -113,6 +122,6 @@
 
 </section>
 
-<script src="assets/js/admin.js?v=260723a"></script>
+<script src="assets/js/admin.js?v=260723b"></script>
 </body>
 </html>

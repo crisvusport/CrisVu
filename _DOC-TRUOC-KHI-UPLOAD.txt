@@ -1,9 +1,13 @@
 GÓI CHỈ CHỨA FILE GIAO DIỆN — KHÔNG có data/products.json, KHÔNG có images/.
 Upload đè toàn bộ nội dung này lên GitHub. Sản phẩm & ảnh của bạn được giữ nguyên.
 
+*** GÓI NÀY CÓ FILE MỚI: assets/js/leagues.js — nhớ upload cả thư mục assets ***
+
 Bản này:
-1. Dòng chọn đội bóng (dưới tab CLB / Đội tuyển) giờ CHỈ CHỌN MỘT đội.
-   Bấm đội khác thì chuyển sang đội đó; bấm lại đội đang chọn thì bỏ chọn.
-   (Bộ lọc bên trong vẫn chọn được nhiều như cũ.)
-2. Dòng đội bóng có nút mũi tên vàng + hiệu ứng mờ ở mép
-   để khách biết còn trượt xem thêm đội khác.
+1. Trang quản trị: bỏ ô chọn "Màu áo" cho gọn.
+2. Trang quản trị: thêm thanh TÌM KIẾM + nút lọc nhanh (theo Danh mục, Loại)
+   -> tìm sản phẩm để Sửa/Xoá dễ hơn nhiều. Tìm được cả không dấu (vd "ao khoac").
+3. Trang sản phẩm: thêm bảng "GIẢI ĐẤU & ĐỘI BÓNG"
+   - CLB gom theo giải: Ngoại hạng Anh, La Liga, Serie A, Bundesliga, Ligue 1, Bồ Đào Nha...
+   - Đội tuyển gom theo châu lục: Châu Âu, Nam Mỹ, Châu Á, Châu Phi, Bắc & Trung Mỹ
+   - Tự nhận diện từ tên đội, KHÔNG cần sửa lại sản phẩm cũ.

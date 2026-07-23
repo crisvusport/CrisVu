@@ -24,6 +24,8 @@ const I18N = {
 
     "search.placeholder": "Tìm theo đội bóng, mùa giải...",
     "filter.title": "Bộ lọc",
+    "league.title": "Giải đấu & đội bóng",
+    "league.all": "Tất cả đội bóng",
     "filter.loai": "Loại",
     "filter.kit": "Mẫu áo",
     "filter.version": "Phiên bản",
@@ -108,6 +110,8 @@ const I18N = {
 
     "search.placeholder": "Search by team, season...",
     "filter.title": "Filters",
+    "league.title": "Leagues & teams",
+    "league.all": "All teams",
     "filter.loai": "Type",
     "filter.kit": "Kit",
     "filter.version": "Version",

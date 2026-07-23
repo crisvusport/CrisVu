@@ -123,6 +123,35 @@ function updateTeamRowHint(){
   wrap.classList.toggle("at-end", row.scrollLeft >= row.scrollWidth - row.clientWidth - 2);
 }
 
+/* ===== Bảng "Giải đấu & đội bóng": gom đội theo giải / châu lục ===== */
+function renderLeaguePanel(){
+  const box = document.getElementById("lg-groups");
+  if(!box || typeof groupTeams !== "function") return;
+  // chỉ gom trong phạm vi danh mục đang xem
+  const pool = STATE.category === "all" ? PRODUCTS
+    : STATE.category === "retro" ? PRODUCTS.filter(p => (p.special||[]).includes("retro"))
+    : PRODUCTS.filter(p => p.category === STATE.category);
+
+  const groups = groupTeams(pool);
+  box.innerHTML = groups.map(g => `
+    <div class="lg-group">
+      <h5>${g.label} <span class="lg-n">${g.teams.length}</span></h5>
+      <div class="lg-teams">
+        ${g.teams.map(tm => `<button class="lg-team ${STATE.team.includes(tm)?'active':''}" data-team="${tm}">${tm}</button>`).join("")}
+      </div>
+    </div>`).join("") || `<p class="muted small">${t("filter.none")}</p>`;
+
+  box.querySelectorAll(".lg-team").forEach(b => b.addEventListener("click", () => {
+    const tm = b.dataset.team;
+    STATE.team = STATE.team.includes(tm) ? [] : [tm];
+    document.getElementById("league-panel").classList.remove("open");
+    renderTeamRow(); renderCatalog(); renderLeaguePanel();
+    // kéo chip đội đang chọn vào tầm nhìn
+    const chip = document.querySelector(`.team-chip[data-team="${CSS.escape(tm)}"]`);
+    if(chip) chip.scrollIntoView({inline:"center", block:"nearest", behavior:"smooth"});
+  }));
+}
+
 /* Xây các nút lọc — danh sách cố định, cho phép chọn nhiều */
 function buildFilters(){
   fillFilterGroup("f-loai", FILTER_VALUES.loai, "loai", "loai");
@@ -226,6 +255,8 @@ function initCatalog(){
       STATE.team = [];            // đổi danh mục thì bỏ chọn đội cũ
       renderTeamRow();
       renderCatalog();
+      const lp = document.getElementById("league-panel");
+      if(lp && lp.classList.contains("open")) renderLeaguePanel();
     });
   });
 
@@ -240,6 +271,22 @@ function initCatalog(){
     if(al) al.addEventListener("click", ()=> trow.scrollBy({left:-step(), behavior:"smooth"}));
     if(ar) ar.addEventListener("click", ()=> trow.scrollBy({left: step(), behavior:"smooth"}));
   }
+
+  // bảng Giải đấu & đội bóng
+  const lgT = document.getElementById("league-toggle");
+  const lgP = document.getElementById("league-panel");
+  if(lgT && lgP){
+    lgT.addEventListener("click", ()=>{
+      lgP.classList.toggle("open");
+      if(lgP.classList.contains("open")) renderLeaguePanel();
+    });
+  }
+  const lgAll = document.getElementById("lg-all");
+  if(lgAll) lgAll.addEventListener("click", ()=>{
+    STATE.team = [];
+    lgP.classList.remove("open");
+    renderTeamRow(); renderCatalog();
+  });
 
   // ô tìm kiếm
   const search = document.getElementById("search-input");

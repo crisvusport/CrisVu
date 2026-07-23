@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Be+Vietnam+Pro:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=260723a">
+<link rel="stylesheet" href="assets/css/style.css?v=260723b">
 </head>
 <body>
 
@@ -43,10 +43,21 @@
     <button class="team-arrow team-arrow-r" id="team-arrow-r" type="button" aria-label="Xem thêm đội khác">›</button>
   </div>
 
-  <button class="filter-toggle" id="filter-toggle">
-    <span data-i18n="filter.title">Bộ lọc</span>
-    <span class="count" id="filter-count" style="display:none">0</span>
-  </button>
+  <div class="ctl-row">
+    <button class="filter-toggle" id="league-toggle">
+      <span data-i18n="league.title">Giải đấu &amp; đội bóng</span>
+      <span class="cx">▾</span>
+    </button>
+    <button class="filter-toggle" id="filter-toggle">
+      <span data-i18n="filter.title">Bộ lọc</span>
+      <span class="count" id="filter-count" style="display:none">0</span>
+    </button>
+  </div>
+
+  <div class="league-panel" id="league-panel">
+    <button class="lg-all" id="lg-all" data-i18n="league.all">Tất cả đội bóng</button>
+    <div class="lg-groups" id="lg-groups"></div>
+  </div>
 
   <div class="filters" id="filters">
     <div class="fgroup"><h4 data-i18n="filter.loai">Loại</h4><div class="fopts" id="f-loai"></div></div>
@@ -124,9 +135,10 @@
   <button class="fab-toggle" id="fab-toggle" aria-label="Liên hệ">✆</button>
 </div>
 
-<script src="assets/js/i18n.js?v=260723a"></script>
-<script src="assets/js/app.js?v=260723a"></script>
-<script src="assets/js/catalog.js?v=260723a"></script>
+<script src="assets/js/i18n.js?v=260723b"></script>
+<script src="assets/js/app.js?v=260723b"></script>
+<script src="assets/js/leagues.js?v=260723b"></script>
+<script src="assets/js/catalog.js?v=260723b"></script>
 <script>
   document.addEventListener("DOMContentLoaded", async () => {
     applyI18n();
