@@ -1457,5 +1457,34 @@
       "detail-6",
       "detail-7"
     ]
+  },
+  {
+    "id": "inter-milan-third-2025-26-ao-gio",
+    "loai": "ao-khoac",
+    "category": "clb",
+    "team": "Inter Milan",
+    "season": "2025/26",
+    "kit": "third",
+    "version": "ao-gio",
+    "special": [],
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "featured": false,
+    "images": [
+      "front",
+      "back",
+      "detail",
+      "detail-2",
+      "detail-3",
+      "detail-4",
+      "detail-5",
+      "detail-6",
+      "detail-7"
+    ]
   }
 ]
