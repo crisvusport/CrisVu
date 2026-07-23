@@ -100,12 +100,27 @@ function renderTeamRow(){
   row.querySelectorAll(".team-chip").forEach(btn => {
     btn.addEventListener("click", () => {
       const tm = btn.dataset.team;
-      const i = STATE.team.indexOf(tm);
-      if(i>=0){ STATE.team.splice(i,1); btn.classList.remove("active"); }
-      else { STATE.team.push(tm); btn.classList.add("active"); }
+      // CHỌN MỘT: bấm đội khác thì chuyển hẳn sang đội đó; bấm lại đội đang chọn thì bỏ chọn
+      STATE.team = STATE.team.includes(tm) ? [] : [tm];
+      row.querySelectorAll(".team-chip").forEach(b =>
+        b.classList.toggle("active", STATE.team.includes(b.dataset.team))
+      );
       renderCatalog();
+      updateTeamRowHint();
     });
   });
+  updateTeamRowHint();
+}
+
+/* Cho biết dòng đội bóng còn trượt được sang hai bên (mờ dần ở mép + nút mũi tên) */
+function updateTeamRowHint(){
+  const wrap = document.getElementById("team-row-wrap");
+  const row = document.getElementById("team-row");
+  if(!wrap || !row) return;
+  const canScroll = row.scrollWidth - row.clientWidth > 4;
+  wrap.classList.toggle("scrollable", canScroll);
+  wrap.classList.toggle("at-start", row.scrollLeft <= 2);
+  wrap.classList.toggle("at-end", row.scrollLeft >= row.scrollWidth - row.clientWidth - 2);
 }
 
 /* Xây các nút lọc — danh sách cố định, cho phép chọn nhiều */
@@ -213,6 +228,18 @@ function initCatalog(){
       renderCatalog();
     });
   });
+
+  // dòng đội bóng: nút mũi tên + theo dõi trượt để bật/tắt gợi ý
+  const trow = document.getElementById("team-row");
+  if(trow){
+    trow.addEventListener("scroll", updateTeamRowHint);
+    window.addEventListener("resize", updateTeamRowHint);
+    const step = () => Math.max(160, trow.clientWidth * 0.7);
+    const al = document.getElementById("team-arrow-l");
+    const ar = document.getElementById("team-arrow-r");
+    if(al) al.addEventListener("click", ()=> trow.scrollBy({left:-step(), behavior:"smooth"}));
+    if(ar) ar.addEventListener("click", ()=> trow.scrollBy({left: step(), behavior:"smooth"}));
+  }
 
   // ô tìm kiếm
   const search = document.getElementById("search-input");

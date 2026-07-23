@@ -227,9 +227,34 @@ h1,h2,h3{ margin: 0; font-family: var(--display); font-weight: 800; }
 .tab.active{ background: var(--gold); border-color: var(--gold); color: var(--ink); }
 
 /* Hàng đội bóng sổ ra theo danh mục */
-.team-row{ display:none; gap:6px; overflow-x:auto; padding: 4px 0 2px; scrollbar-width:none; }
+.team-row{ display:none; gap:6px; overflow-x:auto; padding: 4px 0 2px; scrollbar-width:none; scroll-behavior:smooth; }
 .team-row::-webkit-scrollbar{ display:none; }
 .team-row.show{ display:flex; }
+
+/* Khung bọc: mờ dần ở mép + nút mũi tên để biết còn trượt được */
+.team-row-wrap{ position:relative; }
+.team-row-wrap::before,
+.team-row-wrap::after{
+  content:""; position:absolute; top:0; bottom:0; width:46px; pointer-events:none;
+  opacity:0; transition:opacity .2s; z-index:2;
+}
+.team-row-wrap::before{ left:0; background:linear-gradient(90deg, var(--ink) 20%, transparent); }
+.team-row-wrap::after{ right:0; background:linear-gradient(270deg, var(--ink) 20%, transparent); }
+.team-row-wrap.scrollable:not(.at-start)::before{ opacity:1; }
+.team-row-wrap.scrollable:not(.at-end)::after{ opacity:1; }
+
+.team-arrow{
+  position:absolute; top:50%; transform:translateY(-50%); z-index:3;
+  width:30px; height:30px; border-radius:50%; display:none;
+  align-items:center; justify-content:center;
+  background: var(--ink-2); border:1px solid var(--gold); color: var(--gold);
+  font-size:17px; line-height:1; cursor:pointer; padding:0;
+}
+.team-arrow-l{ left:-4px; }
+.team-arrow-r{ right:-4px; }
+.team-row-wrap.scrollable:not(.at-start) .team-arrow-l{ display:flex; }
+.team-row-wrap.scrollable:not(.at-end) .team-arrow-r{ display:flex; }
+.team-arrow:hover{ background: var(--gold); color: var(--ink); }
 .team-chip{
   flex:0 0 auto; font-size: 13px; color: var(--paper);
   border:1px solid var(--line); padding: 6px 13px; border-radius: 999px;

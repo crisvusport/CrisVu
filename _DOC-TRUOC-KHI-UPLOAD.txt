@@ -2,9 +2,8 @@ GÓI CHỈ CHỨA FILE GIAO DIỆN — KHÔNG có data/products.json, KHÔNG có
 Upload đè toàn bộ nội dung này lên GitHub. Sản phẩm & ảnh của bạn được giữ nguyên.
 
 Bản này:
-- Tối ưu tìm kiếm cho người Việt: gõ có dấu / không dấu / tiếng Anh đều ra
-  (vd: "ao khoac", "áo khoác", "jacket", "san khach", "ao gio"...).
-- Vẫn giữ chống cache (đã bump phiên bản mới).
-
-LƯU Ý về áo khoác lọc ra 0: do sản phẩm đang lưu SAI Loại (lưu thành "Áo").
-Cần vào Quản trị -> Sửa từng áo khoác -> đổi Loại thành "Áo khoác" -> Lưu.
+1. Dòng chọn đội bóng (dưới tab CLB / Đội tuyển) giờ CHỈ CHỌN MỘT đội.
+   Bấm đội khác thì chuyển sang đội đó; bấm lại đội đang chọn thì bỏ chọn.
+   (Bộ lọc bên trong vẫn chọn được nhiều như cũ.)
+2. Dòng đội bóng có nút mũi tên vàng + hiệu ứng mờ ở mép
+   để khách biết còn trượt xem thêm đội khác.
