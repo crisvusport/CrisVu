@@ -1791,5 +1791,30 @@
       "front",
       "back"
     ]
+  },
+  {
+    "id": "juventus-away-1997-98-fan-2",
+    "loai": "ao",
+    "category": "clb",
+    "team": "Juventus",
+    "season": "1997/98",
+    "kit": "away",
+    "version": "fan",
+    "special": [
+      "retro",
+      "dai-tay"
+    ],
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "featured": false,
+    "images": [
+      "front",
+      "back"
+    ]
   }
 ]
