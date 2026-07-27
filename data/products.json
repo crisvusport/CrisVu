@@ -1815,5 +1815,30 @@
       "detail-6",
       "detail-7"
     ]
+  },
+  {
+    "id": "juventus-home-2002-03-fan",
+    "loai": "ao",
+    "category": "clb",
+    "team": "Juventus",
+    "season": "2002/03",
+    "kit": "home",
+    "version": "fan",
+    "special": [
+      "retro",
+      "dai-tay"
+    ],
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "featured": false,
+    "images": [
+      "front",
+      "back"
+    ]
   }
 ]
