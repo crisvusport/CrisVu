@@ -1523,5 +1523,33 @@
       "detail-3",
       "detail-4"
     ]
+  },
+  {
+    "id": "real-madrid-away-1997-98-fan",
+    "loai": "ao",
+    "category": "clb",
+    "team": "Real Madrid",
+    "season": "1997/98",
+    "kit": "away",
+    "version": "fan",
+    "special": [
+      "retro"
+    ],
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "featured": false,
+    "images": [
+      "front",
+      "back",
+      "detail",
+      "detail-2",
+      "detail-3",
+      "detail-4"
+    ]
   }
 ]
