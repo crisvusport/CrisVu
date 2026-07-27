@@ -1581,5 +1581,34 @@
       "detail-4",
       "detail-5"
     ]
+  },
+  {
+    "id": "fc-barcelona-away-2016-17-fan",
+    "loai": "ao",
+    "category": "clb",
+    "team": "FC Barcelona",
+    "season": "2016/17",
+    "kit": "away",
+    "version": "fan",
+    "special": [
+      "retro",
+      "dai-tay"
+    ],
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "featured": false,
+    "images": [
+      "front",
+      "back",
+      "detail",
+      "detail-2",
+      "detail-3",
+      "detail-4"
+    ]
   }
 ]
