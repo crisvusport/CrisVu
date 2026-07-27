@@ -367,13 +367,20 @@ async function submitForm(e){
       Object.assign(product, base);
     }else{
       // cảnh báo nếu có sản phẩm tương tự (cùng đội, mùa giải, mẫu áo, phiên bản, loại)
+      const sameSpecial = (a,b) => {
+        const x = [...(a||[])].sort().join(",");
+        const y = [...(b||[])].sort().join(",");
+        return x === y;
+      };
       const dup = PRODUCTS.find(p =>
         (p.team||"").trim().toLowerCase() === team.toLowerCase() &&
         p.season === base.season && p.kit === base.kit &&
-        p.version === base.version && p.loai === base.loai
+        p.version === base.version && p.loai === base.loai &&
+        sameSpecial(p.special, base.special)
       );
       if(dup){
-        const dupName = `${dup.team} · ${dup.season} · ${label("kit",dup.kit)} · ${label("version",dup.version)}`;
+        const dupName = `${dup.team} · ${dup.season} · ${label("kit",dup.kit)} · ${label("version",dup.version)}` +
+          ((dup.special||[]).length ? " · " + dup.special.map(s=>label("special",s)).join(" · ") : "");
         const ok = confirm(
           "Có vẻ đã có sản phẩm giống thế này:\n\n• " + dupName +
           "\n\nBấm OK nếu bạn VẪN muốn thêm mới.\nBấm Cancel để quay lại (muốn sửa sản phẩm cũ thì dùng nút \"Sửa\")."
