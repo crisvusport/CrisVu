@@ -1666,5 +1666,33 @@
       "detail-3",
       "detail-4"
     ]
+  },
+  {
+    "id": "real-madrid-home-2026-27-fan-2",
+    "loai": "bo-quan-ao",
+    "category": "clb",
+    "team": "Real Madrid",
+    "season": "2026/27",
+    "kit": "home",
+    "version": "fan",
+    "special": [],
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL",
+      "XXXL"
+    ],
+    "featured": false,
+    "images": [
+      "front",
+      "detail",
+      "detail-2",
+      "detail-3",
+      "detail-4",
+      "detail-5",
+      "detail-6"
+    ]
   }
 ]
