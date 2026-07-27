@@ -1840,5 +1840,30 @@
       "front",
       "back"
     ]
+  },
+  {
+    "id": "juventus-home-1997-98-fan",
+    "loai": "ao",
+    "category": "clb",
+    "team": "Juventus",
+    "season": "1997/98",
+    "kit": "home",
+    "version": "fan",
+    "special": [
+      "retro",
+      "dai-tay"
+    ],
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "featured": false,
+    "images": [
+      "front",
+      "back"
+    ]
   }
 ]
