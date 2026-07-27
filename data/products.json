@@ -1638,5 +1638,33 @@
       "detail-3",
       "detail-4"
     ]
+  },
+  {
+    "id": "han-quoc-south-korea-home-2002-fan",
+    "loai": "ao",
+    "category": "doi-tuyen",
+    "team": "Hàn Quốc (South Korea)",
+    "season": "2002",
+    "kit": "home",
+    "version": "fan",
+    "special": [
+      "retro"
+    ],
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "featured": false,
+    "images": [
+      "front",
+      "back",
+      "detail",
+      "detail-2",
+      "detail-3",
+      "detail-4"
+    ]
   }
 ]
