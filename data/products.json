@@ -745,33 +745,6 @@
     ]
   },
   {
-    "id": "spain-home-2026-ao-gio",
-    "loai": "ao-khoac",
-    "category": "doi-tuyen",
-    "team": "Spain",
-    "season": "2026",
-    "kit": "home",
-    "version": "ao-gio",
-    "special": [],
-    "accent": "#c9a24b",
-    "sizes": [
-      "S",
-      "M",
-      "L",
-      "XL",
-      "XXL"
-    ],
-    "featured": false,
-    "images": [
-      "front",
-      "back",
-      "detail",
-      "detail-2",
-      "detail-3",
-      "detail-4"
-    ]
-  },
-  {
     "id": "real-madrid-home-2025-26-fan",
     "loai": "ao",
     "category": "clb",
