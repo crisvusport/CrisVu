@@ -1494,5 +1494,34 @@
       "detail-5",
       "detail-6"
     ]
+  },
+  {
+    "id": "brazil-away-1994-97-fan",
+    "loai": "ao",
+    "category": "doi-tuyen",
+    "team": "Brazil",
+    "season": "1994/97",
+    "kit": "away",
+    "version": "fan",
+    "special": [
+      "retro",
+      "dai-tay"
+    ],
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "featured": false,
+    "images": [
+      "front",
+      "back",
+      "detail",
+      "detail-2",
+      "detail-3",
+      "detail-4"
+    ]
   }
 ]
