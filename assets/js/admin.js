@@ -483,9 +483,11 @@ function initForm(){
   fillSelect(document.forms["prod-form"].category, OPT.category);
   fillSelect(document.forms["prod-form"].kit, OPT.kit);
   fillSelect(document.forms["prod-form"].version, OPT.version);
-  // thêm lựa chọn để trống (cho áo khoác / bộ đồ không có Fan/Player)
+  // thêm lựa chọn để trống (cho sản phẩm không phân loại rõ)
+  const ksel = document.forms["prod-form"].kit;
+  ksel.insertAdjacentHTML("afterbegin", '<option value="">— Không có —</option>');
   const vsel = document.forms["prod-form"].version;
-  vsel.insertAdjacentHTML("afterbegin", '<option value="">— Không có (áo khoác / bộ đồ) —</option>');
+  vsel.insertAdjacentHTML("afterbegin", '<option value="">— Không có —</option>');
   document.getElementById("special-boxes").innerHTML = OPT.special.map(([v,l])=>
     `<label class="cbox"><input type="checkbox" name="special" value="${v}"> ${l}</label>`
   ).join("");
