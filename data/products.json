@@ -1902,5 +1902,32 @@
       "detail-13",
       "detail-14"
     ]
+  },
+  {
+    "id": "real-madrid-home-2026-27-fan-3",
+    "loai": "quan",
+    "category": "clb",
+    "team": "Real Madrid",
+    "season": "2026/27",
+    "kit": "home",
+    "version": "fan",
+    "special": [],
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "featured": false,
+    "images": [
+      "front",
+      "back",
+      "detail",
+      "detail-2",
+      "detail-3",
+      "detail-4",
+      "detail-5"
+    ]
   }
 ]
